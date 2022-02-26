@@ -8,9 +8,10 @@ export class Options {
                             lAttack: 'KeyJ',
                             hAttack: 'KeyK',
                             throw: 'KeyL',
-                            block: 'Space'
+                            jump: 'Space'
                         };
         this.difficulty = 'easy';
-        this.stage = 'random'
+        this.stage = 'random';
+        this.sound = 'on'
     }
 }

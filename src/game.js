@@ -10,6 +10,16 @@ export class Game {
         this.dimensions = {width: canvas.width, height: canvas.height}
         this.options = new Options();
         this.startMenu();
+        this.controller = {
+            up: false,
+            down:false,
+            left:false,
+            right:false,
+            lAttack:false,
+            hAttack:false,
+            jump:false,
+            throw:false
+        }
     }
     startMenu() {
         this.currentScreen = new StartMenu(this);
@@ -18,6 +28,14 @@ export class Game {
 
     startGame() {
         this.currentScreen = new Stage(this) 
+    }
+
+    setKeyDown(command) {
+        this.controller[`${command}`] = true;
+    }
+
+    setKeyUp(command) {
+        this.controller[`${command}`] = false
     }
 
     receiveInput(command) {
@@ -31,7 +49,7 @@ export class Game {
                  break;
             case 'lAttack':
             case 'hAttack':
-            case 'block':
+            case 'jump':
             case 'throw':
                  this.currentScreen.performAction(command)
                  break;
@@ -41,15 +59,12 @@ export class Game {
     
     update() {
         this.currentScreen.draw(this.ctx)
+        if (this.currentScreen.constructor === Stage) {
+            this.currentScreen.checkAttacksLanded();
+            this.currentScreen.checkKilledEnemies()
+        }
         requestAnimationFrame(this.update.bind(this))
     }
     
 
-    animate() {
-
-    }
-
-    playLoop() {
-
-    }
 }

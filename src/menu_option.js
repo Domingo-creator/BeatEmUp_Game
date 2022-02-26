@@ -14,7 +14,6 @@ export class MenuOption {
     }
 
     toggleHighlight() {
-        
         this.selectedStatus === true ? this.selectedStatus = false : this.selectedStatus = true; 
     }
 }

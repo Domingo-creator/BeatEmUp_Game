@@ -37,27 +37,29 @@ export class StartMenu {
     }
 
     createMainMenuOptions() {
+        this.headline = 'Beat-Em-Up';
+        this.selectedIdx = 0;
         const startOption = new MenuOption('Start', [this.dimensions.width/2, this.dimensions.height/2], this.game.startGame.bind(this.game), true)
         const optionsOption = new MenuOption('Options', [this.dimensions.width/2, this.dimensions.height/1.6], this.createOptionsMenuOptions.bind(this))
         this.menuOptions = [startOption, optionsOption];
-        this.selectedIdx = 0;
-        this.headline = 'Beat-Em-Up';
         this.draw(this.ctx);
     }
 
     createOptionsMenuOptions() {
-        const soundOption = new MenuOption('Sound', [this.dimensions.width/2, this.dimensions.height/2], this.adjustSound, true)
-        const difficultyOption = new MenuOption('Difficulty', [this.dimensions.width/2, this.dimensions.height/1.6], this.adjustDifficulty)
+        this.headline = 'Options';
+        this.selectedIdx = 0;
+        const soundOption = new MenuOption('Sound', [this.dimensions.width/2, this.dimensions.height/1.85], this.createSoundMenuOptions.bind(this), true)
+        const difficultyOption = new MenuOption('Difficulty', [this.dimensions.width/2, this.dimensions.height/1.6], this.createDifficultyMenuOptions.bind(this))
         const controlsOption = new MenuOption('Change Controls', [this.dimensions.width/2, this.dimensions.height/1.4], this.createControlsMenuOptions.bind(this))
         const backOption = new MenuOption('Back', [this.dimensions.width/2, this.dimensions.height/1.2], this.createMainMenuOptions.bind(this))
         this.menuOptions = [soundOption, difficultyOption, controlsOption, backOption];
-        this.selectedIdx = 0;
-        this.headline = 'Options';
-        this.draw(this.ctx, 'Options');
+        this.draw(this.ctx);
     }
 
     createControlsMenuOptions() {
         // TODO:  Make ACTION to change store adjusted controls somehow, then action to actually change controls
+        this.headline = 'Controls';
+        this.selectedIdx = 0;
         this.menuOptions =  [    
          new MenuOption(`Reset Default`,[this.dimensions.width/2, this.dimensions.height/3], this.updateControls, true),
          new MenuOption(`Up: ${this.game.options.controls['up']}`,[this.dimensions.width/2, this.dimensions.height/2.5], this.updateControls),   
@@ -71,22 +73,35 @@ export class StartMenu {
          new MenuOption(`Confirm Changes`,[this.dimensions.width/2, this.dimensions.height/1.10], this.updateControls),
          new MenuOption(`Back`,[this.dimensions.width/2, this.dimensions.height/1.04], this.createOptionsMenuOptions.bind(this)) ]
           
-        this.selectedIdx = 0;
-        this.headline = 'Controls';
-        this.draw(this.ctx, 'Controls')
+        this.draw(this.ctx)
     }   
 
-    // createDifficultyMenuOptions() {
-    //     this.menuOptions = [
-    //         new MenuOption('Sound', [this.dimensions.width/2, this.dimensions.height/2], this.adjustSound, true)
-    //          new MenuOption('Difficulty', [this.dimensions.width/2, this.dimensions.height/1.6], this.adjustDifficulty)
-    //     const
-    //     const controlsOption = new MenuOption('Back', [this.dimensions.width/2, this.dimensions.height/1.4], this.createOptionsMenuOptions.bind(this)
+    createDifficultyMenuOptions() {
+        this.headline = 'Difficulty';
+        this.menuOptions = [
+            new MenuOption('Easy', [this.dimensions.width/2, this.dimensions.height/1.85], () => this.adjustDifficulty('easy'), this.game.options.difficulty === 'easy' ? true : false),
+            new MenuOption('Medium', [this.dimensions.width/2, this.dimensions.height/1.6], () => this.adjustDifficulty('medium'), this.game.options.difficulty === 'medium' ? true : false),
+            new MenuOption('Hard', [this.dimensions.width/2, this.dimensions.height/1.4], () => this.adjustDifficulty('hard'), this.game.options.difficulty === 'hard' ? true : false)
+        ]
+        this.menuOptions.forEach( (option, i) => {
+            if(option.selectedStatus) this.selectedIdx = i;
+        })
+        this.draw(this.ctx)
+    }
 
-    //     ]
-    // }
+    createSoundMenuOptions() {
+        this.headline = 'Sound';
+        this.menuOptions = [
+            new MenuOption('On', [this.dimensions.width/2, this.dimensions.height/1.85], () => this.adjustSound('on'), this.game.options.sound === 'on' ? true : false),
+            new MenuOption('Off', [this.dimensions.width/2, this.dimensions.height/1.6], () => this.adjustSound('off'), this.game.options.sound === 'off' ? true : false),
+        ]
+        this.menuOptions.forEach( (option, i) => {
+            if(option.selectedStatus) this.selectedIdx = i;
+        })
+        this.draw(this.ctx)
+    }
 
-    draw(ctx, headline) {
+    draw(ctx) {
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height)
         ctx.font = '50px Comic Sans MS';
@@ -101,11 +116,13 @@ export class StartMenu {
 
     }
 
-    adjustDifficulty() {
-
+    adjustDifficulty(difficulty) {
+        this.game.options.difficulty = difficulty
+        this.createOptionsMenuOptions();
     }
 
-    adjustSound() {
-
+    adjustSound(soundStatus) {
+        this.game.options.sound = soundStatus;
+        this.createOptionsMenuOptions()
     }
 }

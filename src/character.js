@@ -1,15 +1,16 @@
 import { LifeBar } from "./lifebar";
 
 export class Character {
-    constructor(game, health, startPos, items = [], powerups = []) {
+    constructor(game, startPos, lifebarSide, size ={ height: 50, width: 20}, items = [], powerups = []) {
         this.game = game;
-        this.lifebar = new LifeBar(this.game.ctx, this.game.dimensions);
+        this.lifebar = new LifeBar(this.game.ctx, this.game.dimensions, lifebarSide);
         this.position = startPos;
         this.items = items;
         this.powerUps = powerups;
         this.stunned = false;
-        // this.hitBox = null;
-        // this.hurtBox = calculateHurtBox();
+        this.size = size;
+        this.currentAttack = null;
+        this.hitbox = []
     }
 
     drawCharacter() {
@@ -20,6 +21,12 @@ export class Character {
 
     move() {
         console.log('fell to super class move')
+    }
+    
+    takeDamage(amount) {
+        this.lifebar.reduceHealth(amount)
+        this.stunned = true;
+        setTimeout( () => this.stunned = false, 500)
     }
 
 
@@ -41,35 +48,41 @@ export class Character {
 
 
 
+
     // drop last item from this.items return the dropped item
     dropItem() {
         //start drop animation
         return this.items.pop()
     }
 
-    lightAttack() {
-        //start attack animation
-        //extend hitbox/hurtbox for certain amount of time   
+    performLightAttack(){
+        // console.log('attacking')
+        this.hitbox = [this.position[0]-50,this.position[1]+this.size.height,this.position[0]+50, this.position[1]]
+        this.currentAttack = 'lAttack';
+        setTimeout( () => {
+            console.log('attack ending')
+            this.hitbox = []
+            this.currentAttack = null;
+        },500)
     }
 
+    performHeavyAttack() {
 
-
-    beginBlock() {
-        //start block animation
-        this.blockStatus = true;
     }
 
+    performThrow(){
 
-
-    endBlock() {
-        //end block animation
-        this.blockStatus = false;
     }
+  
+    toggleBlock(){
+        this.blockStatus = this.blockStatus ? true :false
+    }
+
 
     calculateHitBox() {
     }
 
     calculateHurtBox() {
-        
+        return  [this.position[0],this.position[1]+this.size.height, this.position[0] + this.size.width, this.position[1]]
     }
 }

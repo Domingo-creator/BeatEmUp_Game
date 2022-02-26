@@ -14,5 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         
     })
+
+    document.addEventListener('keyup', (e) => {
+        
+    })
 })
 
