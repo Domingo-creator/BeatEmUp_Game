@@ -46,6 +46,7 @@ export class PlayerCharacter extends Character{
             }
         }
     }
+    
 
     performAction(command) {
         if(!this.currentAttack) {

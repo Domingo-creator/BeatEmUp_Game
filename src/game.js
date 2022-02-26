@@ -20,6 +20,7 @@ export class Game {
             jump:false,
             throw:false
         }
+        this.update();
     }
     startMenu() {
         this.currentScreen = new StartMenu(this);
@@ -38,33 +39,55 @@ export class Game {
         this.controller[`${command}`] = false
     }
 
-    receiveInput(command) {
-        // console.log(command)
-        switch(command) {
-            case 'left':
-            case 'right':
-            case 'up':
-            case 'down' :
-                 this.currentScreen.move(command)
-                 break;
-            case 'lAttack':
-            case 'hAttack':
-            case 'jump':
-            case 'throw':
-                 this.currentScreen.performAction(command)
-                 break;
-        }
-        this.update()
-    }
+    // receiveInput(command) {
+    //     // console.log(command)
+    //     switch(command) {
+    //         case 'left':
+    //         case 'right':
+    //         case 'up':
+    //         case 'down' :
+    //              this.currentScreen.move(command)
+    //              break;
+    //         case 'lAttack':
+    //         case 'hAttack':
+    //         case 'jump':
+    //         case 'throw':
+    //              this.currentScreen.performAction(command)
+    //              break;
+    //     }
+    //     this.update()
+    // }
     
+    // update() {
+    //     this.currentScreen.draw(this.ctx)
+    //     if (this.currentScreen.constructor === Stage) {
+    //         this.currentScreen.checkAttacksLanded();
+    //         this.currentScreen.checkKilledEnemies()
+    //     }
+    //     requestAnimationFrame(this.update.bind(this))
+    // }
+    checkInputs() {
+        let moveInputs = {left: this.controller.left, 
+                          up: this.controller.up, 
+                          right: this.controller.right,
+                          down: this.controller.down}
+        let actionInputs = {lAttack: this.controller.lAttack,
+                            hAttack: this.controller.hAttack, 
+                            jump: this.controller.jump,
+                            throw: this.controller.throw}
+                            
+        this.currentScreen.move(moveInputs)
+        this.currentScreen.performAction(actionInputs)
+    }
+
     update() {
         this.currentScreen.draw(this.ctx)
+        this.checkInputs()
         if (this.currentScreen.constructor === Stage) {
             this.currentScreen.checkAttacksLanded();
             this.currentScreen.checkKilledEnemies()
         }
         requestAnimationFrame(this.update.bind(this))
     }
-    
 
 }
