@@ -9,14 +9,21 @@ export class Character {
         this.powerUps = powerups;
         this.stunned = false;
         this.size = size;
-        this.currentAttack = null;
+        this.currentAction = null;
         this.hitbox = []
+        this.directionFaced = lifebarSide;
     }
 
     drawCharacter() {
         //TODO make a better character animation
         this.game.ctx.fillStyle = 'yellow'
         this.game.ctx.fillRect(this.position[0], this.position[1], 15, 70)
+        this.game.ctx.fillStyle = "blue"
+        if (this.directionFaced === 'left'){
+            this.game.ctx.fillRect(this.position[0], this.position[1] + 20, 5, 5)
+        }else {
+            this.game.ctx.fillRect(this.position[0]+ 15, this.position[1] + 20, -5, 5)
+        }
     }
 
     move() {
@@ -24,6 +31,7 @@ export class Character {
     }
     
     takeDamage(amount) {
+        console.log('im here')
         this.lifebar.reduceHealth(amount)
         this.stunned = true;
         setTimeout( () => this.stunned = false, 500)
@@ -58,11 +66,11 @@ export class Character {
     performLightAttack(){
         // console.log('attacking')
         this.hitbox = [this.position[0]-50,this.position[1]+this.size.height,this.position[0]+50, this.position[1]]
-        this.currentAttack = 'lAttack';
+        this.currentAction = 'lAttack';
         setTimeout( () => {
             console.log('attack ending')
             this.hitbox = []
-            this.currentAttack = null;
+            this.currentAction = null;
         },500)
     }
 

@@ -76,12 +76,11 @@ export class Stage {
     }
 
     checkPlayerAttacks() {
-        // console.log(this.player.hitbox)
         if (this.player.hitbox.length) {
             this.enemies.forEach(enemy => {
                 if(this.checkCollision(this.player.hitbox, enemy.calculateHurtBox())){
                     console.log('passed collision')
-                    switch(this.player.currentAttack) {
+                    switch(this.player.currentAction) {
                         case 'lAttack':
                             if (!enemy.stunned) {
                                 this.lastEnemyHit = enemy;
@@ -105,9 +104,6 @@ export class Stage {
     }
 
     checkCollision(hitbox, hurtbox) {
-        // console.log('in checkCollisions')
-        // console.log('hitbox',hitbox)
-        // console.log('hurtbox', hurtbox)
         if ((hitbox[0] <= hurtbox[0] && hitbox[2] >= hurtbox[0]) ||
             (hitbox[0] <= hurtbox[2] && hitbox[2] >= hurtbox[2])) {
                 if((hitbox[1] >= hurtbox[1] && hitbox[3] <= hurtbox[1]) ||
