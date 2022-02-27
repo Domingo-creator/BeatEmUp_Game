@@ -4,7 +4,7 @@ import { Game } from './game.js'
 document.addEventListener("DOMContentLoaded", () => {
     let canvas = document.getElementById('game-canvas')
     let game = new Game(canvas);
-
+    
 
 
     document.addEventListener('keydown', (e) => {

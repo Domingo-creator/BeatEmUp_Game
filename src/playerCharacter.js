@@ -1,13 +1,11 @@
 import { Character } from "./character";
 
-export class PlayerCharacter extends Character{
+export class PlayerCharacter extends Character{ 
     constructor(game) {
-        super(game, [30, 450], 'left')
+        super(game, [30, 450], 'left', 'knight', 'right')
         this.blockGuage = 100;
         this.blockStatus = false;  //false if not blocking
         this.score = 0;
-        this.xVel = 0;
-        this.yVel = 0;
         this.jumpVel = 0
         this.jumpHeight = 0;
         this.moveLockOut = false;
@@ -101,8 +99,10 @@ export class PlayerCharacter extends Character{
             }
             if(this.yVel === 0 && this.jumpHeight === 0) this.currentAction = null;
         }
+        let prevDirection = this.directionFaced;
         if(this.xVel > 0) this.directionFaced = 'right';
-        if(this.xVel < 0) this.directionFaced = 'left'
+        if(this.xVel < 0) this.directionFaced = 'left';
+        if( prevDirection !== this.directionFaced) this.resetCurrentFrame();
     }
 
     

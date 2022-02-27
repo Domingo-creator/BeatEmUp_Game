@@ -21,6 +21,8 @@ export class Game {
             throw:false
         }
         this.update();
+        this.ctx.webkitImageSmoothingEnabled = false;
+        this.ctx.imageSmoothingEnabled = false;
     }
     startMenu() {
         this.currentScreen = new StartMenu(this);

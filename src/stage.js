@@ -12,6 +12,7 @@ export class Stage {
         this.stageList = [
             {groundColor: 'brown', skyColor: 'skyblue'}    
         ]
+        this.stageImage = document.getElementById('stage-background');
         this.enemies = [];
         this.lastEnemyHit = null;        
         this.player = new PlayerCharacter(game);
@@ -32,10 +33,11 @@ export class Stage {
     }
 
     draw() {
-        this.ctx.fillStyle = `${this.stage['skyColor']}`;
-        this.ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height)
-        this.ctx.fillStyle = `${this.stage['groundColor']}`
-        this.ctx.fillRect(0, this.floorHeight, this.dimensions.width, this.dimensions.height)
+        var img = new Image();
+        img.onload = () => {
+            this.ctx.drawImage(img, 0, 0, this.dimensions.width, this.dimensions.height);
+        };
+        img.src = '../images/stageBackground.png';
         this.player.drawCharacter();
         this.player.lifebar.drawLifebar();
         this.enemies.forEach( enemy => enemy.drawCharacter())
