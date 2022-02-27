@@ -31,7 +31,6 @@ export class Character {
     }
     
     takeDamage(amount) {
-        console.log('im here')
         this.lifebar.reduceHealth(amount)
         this.stunned = true;
         setTimeout( () => this.stunned = false, 500)

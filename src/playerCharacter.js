@@ -11,7 +11,7 @@ export class PlayerCharacter extends Character{
         this.jumpVel = 0
         this.jumpHeight = 0;
         this.moveLockOut = false;
-        this.moveSpeed = 5;
+        this.moveSpeed = 1;
     }
 
     lockOutMove() {
@@ -22,28 +22,36 @@ export class PlayerCharacter extends Character{
     move() {
         //reduce velocity of everything not pressed
         if (this.currentAction !== 'jump') {
-            if(!this.game.controller.up && this.yVel > 0) this.yVel -= this.moveSpeed
-            if(!this.game.controller.down && this.yVel < 0) this.yVel += this.moveSpeed
-            if(!this.game.controller.left && this.xVel > 0) this.xVel -= this.moveSpeed
-            if(!this.game.controller.right && this.xVel < 0) this.xVel += this.moveSpeed
-        
+            if(!this.game.controller.up && this.yVel < 0) this.yVel += this.moveSpeed
+            if(!this.game.controller.down && this.yVel > 0) this.yVel -= this.moveSpeed
+            if(!this.game.controller.left && this.xVel < 0) this.xVel += this.moveSpeed
+            if(!this.game.controller.right && this.xVel > 0) this.xVel -= this.moveSpeed
         //increase velocity of everything pressed
             if(!this.moveLockOut) {
                 if(this.game.controller.up) {
-                    if(!this.game.controller.down && this.yVel < 0) this.yVel = 0;
-                    if(this.yVel > -20) this.yVel -= this.moveSpeed;
+                    //check if moving opp direction and not still pressing.  reset if so
+                    if(!this.game.controller.down && this.yVel > 0) this.yVel = 0;
+                    this.dashDirection = null;
+                    if(this.yVel > -5) this.yVel -= this.moveSpeed;
                 }
                 if(this.game.controller.down) {
-                    if(!this.game.controller.up && this.yVel > 0) this.yVel = 0;
-                    if(this.yVel < 20 ) this.yVel += this.moveSpeed;
+                    if(!this.game.controller.up && this.yVel < 0) this.yVel = 0;
+                    this.dashDirection = null;
+                    if(this.yVel < 5 ) this.yVel += this.moveSpeed;
                 }
                 if(this.game.controller.left) {
-                    if(!this.game.controller.right && this.xvel > 0) this.xVel = 0;
-                    if(this.xVel > -20) this.xVel -= this.moveSpeed;
+                    if(!this.game.controller.right && this.xVel > 0) this.xVel = 0;
+                    if(this.dashDirection === 'right') this.dashDirection === null;
+                    if(this.xVel > -5 || (this.dashDirection === 'left' && this.xVel > -15)) {
+                        this.xVel -= this.moveSpeed;
+                    } 
                 }
                 if(this.game.controller.right) {
                     if(!this.game.controller.left && this.xVel < 0) this.xVel = 0;
-                    if(this.xVel < 20) this.xVel += this.moveSpeed;
+                    if(this.dashDirection === 'left') this.dashDirection === null;
+                    if(this.xVel < 5  || (this.dashDirection === 'right' && this.xVel < 15)) {
+                        this.xVel += this.moveSpeed;
+                    }
                 }
             }
         } 
@@ -51,7 +59,6 @@ export class PlayerCharacter extends Character{
         this.lockOutMove();
     }
 
-    
     performAction(inputs) {
         if(!this.currentAction) {
             if (inputs.lAttack) {
@@ -65,7 +72,6 @@ export class PlayerCharacter extends Character{
             }
         }
     }
-    
 
     updateNewPos() {
         if (this.checkXInbounds(this.position[0] + this.xVel)){
@@ -126,6 +132,11 @@ export class PlayerCharacter extends Character{
         if(this.game.controller.right && !this.game.controller.left) {
             this.xVel = 10;
         }
+    }
+
+    //command sent all the way from game class keyUp(). janky, maybe fix
+    dash(direction) {
+        this.dashDirection = direction;
     }
 
 }

@@ -31,12 +31,36 @@ export class Game {
         this.currentScreen = new Stage(this) 
     }
 
+    startDashTimeOut() {
+        this.dashTimeOut = setTimeout( () => {this.dashWindow = null}, 2000)
+    }
+
     setKeyDown(command) {
+        if (command === 'left' || command === 'right') {
+            if(this.dashWindow && this.dashWindow.direction === command) {
+                if(this.dashWindow.numUp > 0) this.dashWindow.numDown++;
+            } else {
+                this.dashWindow = {numDown: 1,numUp: 0, direction: command}
+                this.startDashTimeOut();
+            }
+        }
         this.controller[`${command}`] = true;
     }
 
     setKeyUp(command) {
+        if (command === 'left' || command === 'right'){
+            if(this.dashWindow && this.dashWindow.direction === command) {
+                this.dashWindow.numUp++
+                if(this.dashWindow.numDown >= 2 && this.dashWindow.numUp >= 2){
+                    if(this.currentScreen.constructor === Stage) {
+                        this.currentScreen.player.dash(`${command}`)
+                        this.dashTimeOut = null;
+                    }
+                }
+            }
+        }
         this.controller[`${command}`] = false
+
     }
 
     checkInputs() {

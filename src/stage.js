@@ -79,7 +79,7 @@ export class Stage {
         if (this.player.hitbox.length) {
             this.enemies.forEach(enemy => {
                 if(this.checkCollision(this.player.hitbox, enemy.calculateHurtBox())){
-                    console.log('passed collision')
+                    // console.log('passed collision')
                     switch(this.player.currentAction) {
                         case 'lAttack':
                             if (!enemy.stunned) {
