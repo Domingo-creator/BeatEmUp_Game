@@ -42,7 +42,7 @@ export class Character {
     drawCharacter() {
     //TODO make a better character animation
     this.setCurrentAnimation();
-        console.log(this.currentAnimation)
+        // if(this.model === 'skeleton') console.log(this.currentAnimation);
         let spriteSheet = new Image();
         let data = CharacterModels[`${this.model}`][`${this.currentAnimation}`]
         // if(this.currentAnimation === 'death') {
@@ -84,8 +84,8 @@ export class Character {
                 // }
                 if(this.directionFaced === 'right') {
                     if( this.currentFrame !== data.frames - 1)
-                        console.log(this.currentFrame)
-                        this.currentFrame++;
+                    this.currentFrame++;
+                    // console.log(this.currentFrame)
                 } else {
                     if( this.currentFrame !== data.max_frames - data.frames)
                         this.currentFrame--;
