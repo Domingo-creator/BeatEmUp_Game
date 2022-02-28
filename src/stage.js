@@ -14,10 +14,11 @@ export class Stage {
         ]
         this.stageImage = document.getElementById('stage-background');
         this.enemies = [];
+        this.killed_characters = [];
         this.lastEnemyHit = null;        
         this.player = new PlayerCharacter(game);
         this.generateEnemy();
-        this.generateEnemy()
+        this.generateEnemy();
         this.pickStage()
     }
 
@@ -41,7 +42,9 @@ export class Stage {
         this.player.drawCharacter();
         this.player.lifebar.drawLifebar();
         this.enemies.forEach( enemy => enemy.drawCharacter())
+        this.killed_characters.forEach( killedEnemy => killedEnemy.drawCharacter())
         if(this.lastEnemyHit) this.lastEnemyHit.lifebar.drawLifebar();
+        
     }
 
     move(command) {
@@ -57,9 +60,10 @@ export class Stage {
     }
 
     getRandomStartPos() {
-        //todo
-        let positions = [[600, 450], [200, 350], [600, 350], [200,500]]
-        return positions[Math.floor(Math.random() * positions.length)] 
+        let side = Math.floor(Math.random() * 2) === 1 ? 'left' : 'right'
+        let yStart = Math.floor(Math.random() * (this.dimensions.height - this.floorHeight)) + this.floorHeight 
+        let xStart = side === 'left' ? 600 : 200;  // change this to off screen later
+        return [xStart, yStart]
     }
 
     checkAttacksLanded() {
@@ -71,10 +75,22 @@ export class Stage {
         this.enemies.forEach( (enemy, i) => {
             if(enemy.lifebar.health === 0) {
                 this.enemies = this.enemies.slice(0, i).concat(this.enemies.slice(i+1))
+                this.killed_characters.push(enemy);
+                setTimeout(() => this.killed_characters.shift(), 5000)
+                enemy.death();
                 this.lastEnemyHit = null;
                 this.generateEnemy();  // remove this later
             }
         })
+    }
+
+    checkKilledPlayer() {
+        if(this.player.lifebar.health === 0 && this.player.currentAction !== 'death') {
+            this.killed_characters.push(this.player);
+            setTimeout(() => this.killed_characters.shift(), 5000);
+            this.player.death();
+            setTimeout( () => this.player = new PlayerCharacter(this.game), 6000);
+        }
     }
 
     checkPlayerAttacks() {
@@ -102,6 +118,13 @@ export class Stage {
     }
 
     checkEnemyAttack() {
+        this.enemies.forEach( enemy => {
+            if(this.checkCollision(enemy.hitbox, this.player.calculateHurtBox())) {
+                if(!this.player.stunned) {
+                    this.player.takeDamage(10);
+                }
+            }
+        })
 
     }
 

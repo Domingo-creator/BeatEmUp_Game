@@ -84,7 +84,9 @@ export class Game {
         this.checkInputs()
         if (this.currentScreen.constructor === Stage) {
             this.currentScreen.checkAttacksLanded();
-            this.currentScreen.checkKilledEnemies()
+            this.currentScreen.checkKilledEnemies();
+            this.currentScreen.checkKilledPlayer();
+            this.currentScreen.enemies.forEach( enemy => enemy.determineNextAction())
         }
         requestAnimationFrame(this.update.bind(this))
     }
