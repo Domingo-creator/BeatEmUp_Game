@@ -42,13 +42,14 @@ export class Character {
     drawCharacter() {
     //TODO make a better character animation
     this.setCurrentAnimation();
-        // if(this.model === 'skeleton') console.log(this.currentAnimation);
+        // if(this.model === 'knight') console.log(this.currentAnimation);
         let spriteSheet = new Image();
         let data = CharacterModels[`${this.model}`][`${this.currentAnimation}`]
         // if(this.currentAnimation === 'death') {
         // console.log(this.currentFrame, data.frames)
+        if(this.currentAnimation === 'hit')console.log('way before', this.currentFrame)
         this.currentFrame = this.currentFrame % data.frames;
-        
+        // if(this.currentAnimation === 'hit')console.log('after', this.currentFrame)
         spriteSheet.onload = () => {
             // case for multi page sprite sheets
             // if (this.model === 'knight') {
@@ -77,7 +78,7 @@ export class Character {
         this.framesDrawn++
         if(this.framesDrawn >= 10) {
             // if current action is death, stop animating at last frame
-            if ( this.currentAction === 'death'){
+            if ( this.currentAction === 'death' || this.currentAction === 'hit'){
                 // if(this.model === 'knight') {
                 //     console.log(this.currentAction)
                 //     // console.log(data)
@@ -85,10 +86,13 @@ export class Character {
                 if(this.directionFaced === 'right') {
                     if( this.currentFrame !== data.frames - 1)
                     this.currentFrame++;
-                    // console.log(this.currentFrame)
                 } else {
-                    if( this.currentFrame !== data.max_frames - data.frames)
+                    console.log('before',this.currentFrame)
+                    if( this.currentFrame !== data.max_frames - data.frames) {
                         this.currentFrame--;
+                        // if(this.model === 'skeleton' && this.currentAction === 'hit')console.log(this.currentFrame)
+                    }
+                    console.log('after',this.currentFrame)
                 }
             } else {
                 this.directionFaced === 'right' ? this.currentFrame++: this.currentFrame--;
@@ -113,17 +117,23 @@ export class Character {
     }
     
     takeDamage(amount) {
-        this.lifebar.reduceHealth(amount)
-        this.stunned = true;
-        this.currentFrame = 0;
-        this.resetCurrentFrame();
-        this.currentAction = 'hit'
-        setTimeout( () => {
-            if(this.currentAction !== 'death') {
-            this.currentAction = null;
+        if(this.currentAnimation !== 'death' && !this.iFrames) {
+            this.lifebar.reduceHealth(amount)
+            this.stunned = true;
+            this.currentFrame = 0;
+            this.resetCurrentFrame();
+            this.currentAction = 'hit'
+            setTimeout( () => {
+                if(this.currentAction !== 'death') {
+                this.currentAction = null;
+                }
+            }, 500)
+            setTimeout( () => this.stunned = false, 800)
+            if(this.model === 'knight') {
+                this.iFrames = true;
+                setTimeout( () => this.iFrames = false, 1500)
             }
-        }, 500)
-        setTimeout( () => this.stunned = false, 800)
+        }
     }
 
     death() {

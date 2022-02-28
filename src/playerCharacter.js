@@ -19,7 +19,7 @@ export class PlayerCharacter extends Character{
 
     move() {
         //reduce velocity of everything not pressed
-        if (this.currentAction !== 'jump') {
+        if (this.currentAction !== 'jump' && this.currentAnimation !== 'death'  && !this.stunned) {
             if(!this.game.controller.up && this.yVel < 0) this.yVel += this.moveSpeed
             if(!this.game.controller.down && this.yVel > 0) this.yVel -= this.moveSpeed
             if(!this.game.controller.left && this.xVel < 0) this.xVel += this.moveSpeed
@@ -72,6 +72,10 @@ export class PlayerCharacter extends Character{
     }
 
     updateNewPos() {
+        if(this.stunned) {
+            this.xVel = 0;
+            this.yVel = 0;
+        }
         if (this.checkXInbounds(this.position[0] + this.xVel)){
             this.position[0] += this.xVel;
         } 

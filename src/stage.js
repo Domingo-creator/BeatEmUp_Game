@@ -62,7 +62,7 @@ export class Stage {
     getRandomStartPos() {
         let side = Math.floor(Math.random() * 2) === 1 ? 'left' : 'right'
         let yStart = Math.floor(Math.random() * (this.dimensions.height - this.floorHeight)) + this.floorHeight 
-        let xStart = side === 'left' ? 600 : 200;  // change this to off screen later
+        let xStart = side === 'left' ? 1000 : -100;  // change this to off screen later
         return [xStart, yStart]
     }
 

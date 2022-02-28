@@ -9,7 +9,7 @@ export const CharacterModels = {
                  jumpFallinbetween: {row: 1, num_rows: 1, frames: 2, max_frames: 2, left_offset: 20, right_offset: 20,left_pos_offset: 0,right_pos_offset: 0, top_offset_multiplier: 1.9},
                  Run: { row: 1, num_rows: 1, frames: 10, max_frames: 10, left_offset: 40, right_offset: 40, left_pos_offset: -40,right_pos_offset:-40, top_offset_multiplier: 1.9},
                  hit: { row: 1, num_rows: 1, frames: 1, max_frames: 1, left_offset: 0, right_offset: 0,left_pos_offset: -120,right_pos_offset:-80, top_offset_multiplier: 1.9},
-                 death: { row: 1, num_rows: 1, frames: 10, max_frames: 10, left_offset: -20, right_offset: 0,left_pos_offset: -260,right_pos_offset:-120, top_offset_multiplier: 1.9},
+                 death: { row: 1, num_rows: 1, frames: 10, max_frames: 10, left_offset: 0, right_offset: 0,left_pos_offset: -260,right_pos_offset:-120, top_offset_multiplier: 1.9},
                 },
         
         skeleton:{Idle: {row: 4, num_rows: 5,frames:4, max_frames: 13, left_offset:0,right_offset:0,left_pos_offset:-80, right_pos_offset:-80, top_offset_multiplier: 1.8},
