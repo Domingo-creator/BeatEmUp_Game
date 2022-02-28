@@ -42,14 +42,13 @@ export class Character {
     drawCharacter() {
     //TODO make a better character animation
     this.setCurrentAnimation();
+        console.log(this.currentAnimation)
         let spriteSheet = new Image();
         let data = CharacterModels[`${this.model}`][`${this.currentAnimation}`]
         // if(this.currentAnimation === 'death') {
         // console.log(this.currentFrame, data.frames)
-        // }
         this.currentFrame = this.currentFrame % data.frames;
-        // if(this.currentAnimation === 'death') {
-        // console.log(this.currentFrame) }
+        
         spriteSheet.onload = () => {
             // case for multi page sprite sheets
             // if (this.model === 'knight') {
@@ -119,10 +118,12 @@ export class Character {
         this.currentFrame = 0;
         this.resetCurrentFrame();
         this.currentAction = 'hit'
-        if(this.currentAction !== 'death'  || this.lifebar.health !== 0) {
-            setTimeout( () => this.currentAction = null, 500)
-            setTimeout( () => this.stunned = false, 800)
-        }
+        setTimeout( () => {
+            if(this.currentAction !== 'death') {
+            this.currentAction = null;
+            }
+        }, 500)
+        setTimeout( () => this.stunned = false, 800)
     }
 
     death() {

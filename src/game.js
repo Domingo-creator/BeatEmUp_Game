@@ -86,7 +86,7 @@ export class Game {
             this.currentScreen.checkAttacksLanded();
             this.currentScreen.checkKilledEnemies();
             this.currentScreen.checkKilledPlayer();
-            this.currentScreen.enemies.forEach( enemy => enemy.determineNextAction())
+            // this.currentScreen.enemies.forEach( enemy => enemy.determineNextAction())
         }
         requestAnimationFrame(this.update.bind(this))
     }
