@@ -10,6 +10,9 @@ export class ContinueScreen {
         this.optionSelected = 'Yes';
         this.score = this.game.currentScreen.score;
         this.score.timer.stopTimer();
+        this.moveLockout = true;
+        setTimeout(() => this.moveLockout = false, 1000)
+
 
     }
 
@@ -49,14 +52,16 @@ export class ContinueScreen {
     }
 
     performAction(command) {
-        if (command.lAttack) {
-            if(this.optionSelected === 'Yes') {
-                this.playSound();
-                this.game.currentScreen = new Stage(this.game);
-            } else {
-                this.playSound();
-                this.game.currentScreen.stopMusic();
-                this.game.currentScreen = new StartMenu(this.game)
+        if (!this.moveLockout) {
+            if (command.lAttack) {
+                if(this.optionSelected === 'Yes') {
+                    this.playSound();
+                    this.game.currentScreen = new Stage(this.game);
+                } else {
+                    this.playSound();
+                    this.game.currentScreen.stopMusic();
+                    this.game.currentScreen = new StartMenu(this.game)
+                }
             }
         }
     }

@@ -156,7 +156,7 @@ export class PlayerCharacter extends Character{
     getRunSound() {
         if(!this.runSoundTimeOut) {
             this.runSoundTimeOut = true;
-            setTimeout( () => this.runSoundTimeOut = false, 1000)
+            setTimeout( () => this.runSoundTimeOut = false, 700)
             if(this.game.options.sound === 'on') {
                 var sound = new Howl({
                     src: ['./sounds/player_sounds/move/steps_platform.ogg']
