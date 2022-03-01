@@ -136,7 +136,7 @@ export class StartMenu {
     }
 
     draw(ctx) {
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "rgb(59, 102, 242)";
         ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height)
         ctx.font = '50px Comic Sans MS';
         ctx.fillStyle = "red";

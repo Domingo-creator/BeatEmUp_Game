@@ -9,9 +9,15 @@
     <title>Beat-Em-Up</title>
 </head>
 <body>
-    <div class="container">
-        <canvas id="game-canvas" width=800 height=600></canvas>
-        <script src="./node_modules/howler/dist/howler.js"></script>
+    <div class="outer-container">
+        <label for="enter-checkbox"></label>
+        <input type="checkbox" id='enter-checkbox'>
+        <div class="background-container">
+            <div class="canvas-container">
+                <canvas id="game-canvas" width=800 height=600 ></canvas>
+                <script src="./node_modules/howler/dist/howler.js"></script>        
+            </div>
+        </div>
     </div>
 </body>
 </html>
