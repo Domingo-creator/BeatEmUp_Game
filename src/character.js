@@ -44,7 +44,7 @@ export class Character {
     this.setCurrentAnimation();
         let spriteSheet = new Image();
         let data = CharacterModels[`${this.model}`][`${this.currentAnimation}`]
-        if(this.currentAnimation === 'hit')console.log('way before', this.currentFrame)
+        // if(this.currentAnimation === 'hit')console.log('way before', this.currentFrame)
         this.currentFrame = this.currentFrame % data.frames;
         spriteSheet.onload = () => {
                 let spriteWidth = (spriteSheet.width)/ data.max_frames

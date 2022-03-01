@@ -7,7 +7,11 @@ export class Timer {
     }
 
     startTimer() {
-        let interval = setInterval( () => this.time += 1 , 1000)
+        return setInterval( () => this.time += 1 , 1000)
+    }
+
+    stopTimer() {
+       clearInterval(this.counter)
     }
 
     draw() {

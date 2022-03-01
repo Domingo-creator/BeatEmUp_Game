@@ -7,7 +7,8 @@ export class StartMenu {
         this.dimensions = game.dimensions;
         this.ctx = game.ctx;
         this.createMainMenuOptions();
-        this.menuReady = true;
+        this.menuReady = false;
+        setTimeout( () => this.menuReady = true, 1000)
     }
 
     move(inputs) {

@@ -1,3 +1,4 @@
+import { ContinueScreen } from "./continueScreen";
 import { cpuCharacter } from "./cpuCharacter";
 import { PlayerCharacter } from "./playerCharacter";
 import { Score } from "./score";
@@ -25,14 +26,17 @@ export class Stage {
 
     startMusic() {
         if(this.game.options.sound === 'on') {
-            var sound = new Howl({
+            this.sound = new Howl({
                 src: ['../sounds/The_Dark_Amulet.mp3']
             });
               
-            sound.play();
+            this.sound.play();
         }
     }
 
+    stopMusic() {
+        this.sound.stop();
+    }
     // pickStage() {
     //     let stageNum;
     //     if (this.game.options.stage === 'random') {
@@ -62,17 +66,29 @@ export class Stage {
         this.enemies.forEach( enemy => enemy.drawCharacter())
         this.killed_characters.forEach( killedEnemy => killedEnemy.drawCharacter())
         if(this.lastEnemyHit) this.lastEnemyHit.lifebar.drawLifebar();
-        // if(this.gameOver) {
-        //     if(!this.contiueScreen) this.continueScreen = 
-        // }
+        if(this.gameOver) {
+            if(!this.continueScreen) this.continueScreen = new ContinueScreen(this.game);
+            this.continueScreen.draw();
+
+        }
       } 
     }
 
     move(command) {
-        this.player.move(command);
+        if(this.gameOver) {
+            if(!this.continueScreen) this.continueScreen = new ContinueScreen(this.game);
+            this.continueScreen.move(command)
+        } else {
+            this.player.move(command);
+        }
     }
     performAction(command) {
-        this.player.performAction(command)
+        if(this.gameOver) {
+            if(!this.continueScreen) this.continueScreen = new ContinueScreen(this.game);
+            this.continueScreen.performAction(command)
+        } else {
+            this.player.performAction(command)
+        }
     }
 
     addNewEnemies() {
@@ -117,7 +133,7 @@ export class Stage {
             this.killed_characters.push(this.player);
             setTimeout(() => this.killed_characters.shift(), 5000);
             this.player.death();
-            // this.gameOver();
+            this.gameOver = true;
             // setTimeout( () => this.player = new PlayerCharacter(this.game), 6000);
         }
     }
