@@ -40,7 +40,8 @@ export class cpuCharacter extends Character{
         let playerPosition = this.game.currentScreen.player.position
         // console.log(this.position[0] - playerPosition[0] < this.hitBoxRange[0])
         if ((Math.abs(this.position[0] - playerPosition[0]) < this.hitBoxRange[0]) &&
-            (Math.abs(this.position[1] - playerPosition[1]) < this.hitBoxRange[1]) ) {
+            (Math.abs(this.position[1] - playerPosition[1]) < this.hitBoxRange[1]) &&
+            this.game.currentScreen.player.currentAction !== 'jump') {
                 return true;
         }
         return false;

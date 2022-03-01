@@ -9,36 +9,34 @@ export class Stage {
         this.ctx = game.ctx;
         //list of stages.  eventually probably want to replace with images
         //list properties: sky-color, ground-color
-        this.stageList = [
-            {groundColor: 'brown', skyColor: 'skyblue'}    
-        ]
-        this.stageImage = document.getElementById('stage-background');
         this.enemies = [];
         this.killed_characters = [];
         this.lastEnemyHit = null;        
         this.player = new PlayerCharacter(game);
         this.generateEnemy();
         this.generateEnemy();
-        this.pickStage()
+        // this.pickStage()
     }
 
-    pickStage() {
-        let stageNum;
-        if (this.game.options.stage === 'random') {
-            stageNum = Math.floor(Math.random()  * this.stageList.length)
-        } else {
-            stageNum = 0 // TODO CHANGE THIS 
-            /// take stage number/name
-        }
-        this.stage = this.stageList[stageNum]
-    }
+    
+
+    // pickStage() {
+    //     let stageNum;
+    //     if (this.game.options.stage === 'random') {
+    //         stageNum = Math.floor(Math.random()  * this.stageList.length)
+    //     } else {
+    //         stageNum = 0 // TODO CHANGE THIS 
+    //         /// take stage number/name
+    //     }
+    //     this.stage = this.stageList[stageNum]
+    // }
 
     draw() {
         var img = new Image();
         img.onload = () => {
             this.ctx.drawImage(img, 0, 0, this.dimensions.width, this.dimensions.height);
         };
-        img.src = '../images/stageBackground.png';
+        img.src = './images/stageBackground.png';
         this.player.drawCharacter();
         this.player.lifebar.drawLifebar();
         this.enemies.forEach( enemy => enemy.drawCharacter())

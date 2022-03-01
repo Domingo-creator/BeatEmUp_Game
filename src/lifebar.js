@@ -17,9 +17,9 @@ export class LifeBar {
 
     drawLifebar() {
         this.ctx.fillStyle = 'yellow';
-        this.ctx.fillRect(this.getPosition(), 10, this.dimensions.width/2 - 30, 30)
+        this.ctx.fillRect(this.getPosition(), 10, this.dimensions.width/2 - 60, 30)
         this.ctx.fillStyle = 'red'
-        this.ctx.fillRect(this.getPosition(), 10, ((100-this.health)/100)*(this.dimensions.width/2 - 30), 30)
+        this.ctx.fillRect(this.getPosition(), 10, ((100-this.health)/100)*(this.dimensions.width/2 - 60), 30)
         this.ctx.fillStyle = 'black'
         this.ctx.font = '20px Arial';
         if(this.lifeBarSide === 'left') {
@@ -31,6 +31,6 @@ export class LifeBar {
 
     getPosition() {
         // console.log(this.lifeBarSide)
-        return this.lifeBarSide === 'left' ?  10 : this.dimensions.width/1.9
+        return this.lifeBarSide === 'left' ?  10 : this.dimensions.width/1.85
     }
 }
