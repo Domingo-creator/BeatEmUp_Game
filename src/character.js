@@ -42,20 +42,13 @@ export class Character {
     drawCharacter() {
     //TODO make a better character animation
     this.setCurrentAnimation();
-        // if(this.model === 'knight') console.log(this.currentAnimation);
         let spriteSheet = new Image();
         let data = CharacterModels[`${this.model}`][`${this.currentAnimation}`]
-        // if(this.currentAnimation === 'death') {
-        // console.log(this.currentFrame, data.frames)
         if(this.currentAnimation === 'hit')console.log('way before', this.currentFrame)
         this.currentFrame = this.currentFrame % data.frames;
-        // if(this.currentAnimation === 'hit')console.log('after', this.currentFrame)
         spriteSheet.onload = () => {
-            // case for multi page sprite sheets
-            // if (this.model === 'knight') {
                 let spriteWidth = (spriteSheet.width)/ data.max_frames
                 let spriteHeight = spriteSheet.height / data.num_rows;
-                // console.log(this.currentFrame, this.model)
                 let srcX;
                 if(this.directionFaced === 'left') {
                     srcX = this.currentFrame * spriteWidth + ((data.max_frames - data.frames) * spriteWidth) + data[`${this.directionFaced}_offset`]
@@ -79,20 +72,14 @@ export class Character {
         if(this.framesDrawn >= 10) {
             // if current action is death, stop animating at last frame
             if ( this.currentAction === 'death' || this.currentAction === 'hit'){
-                // if(this.model === 'knight') {
-                //     console.log(this.currentAction)
-                //     // console.log(data)
-                // }
                 if(this.directionFaced === 'right') {
                     if( this.currentFrame !== data.frames - 1)
                     this.currentFrame++;
                 } else {
-                    console.log('before',this.currentFrame)
                     if( this.currentFrame !== data.max_frames - data.frames) {
                         this.currentFrame--;
                         // if(this.model === 'skeleton' && this.currentAction === 'hit')console.log(this.currentFrame)
                     }
-                    console.log('after',this.currentFrame)
                 }
             } else {
                 this.directionFaced === 'right' ? this.currentFrame++: this.currentFrame--;
@@ -118,6 +105,7 @@ export class Character {
     
     takeDamage(amount) {
         if(this.currentAnimation !== 'death' && !this.iFrames) {
+            this.getHitSound();
             this.lifebar.reduceHealth(amount)
             this.stunned = true;
             this.currentFrame = 0;
@@ -132,11 +120,13 @@ export class Character {
             if(this.model === 'knight') {
                 this.iFrames = true;
                 setTimeout( () => this.iFrames = false, 1500)
+                this.game.currentScreen.startFlashScreen();
             }
         }
     }
 
     death() {
+        this.getDeathSound();
         this.currentFrame = 0;
         this.resetCurrentFrame();
         this.stunned = true;

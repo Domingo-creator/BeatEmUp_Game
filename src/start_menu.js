@@ -1,3 +1,4 @@
+import { Howl } from "howler";
 import { MenuOption } from "./menu_option";
 
 export class StartMenu {
@@ -47,10 +48,23 @@ export class StartMenu {
             // case 'hAttack':
         }
     }
+
+    playMenuMoveSound() {
+        if(this.game.options.sound === 'on') {
+            var sound = new Howl({
+                src: ['./sounds/menu_sounds/MENU_Pick.wav']
+            });
+            
+            sound.play();
+        }
+
+    }
+
     
 
     lockoutMenu() {
         this.menuReady = false;
+        this.playMenuMoveSound();
         setTimeout( () => this.menuReady = true, 200)
     }
 

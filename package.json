@@ -7,7 +7,7 @@
     "defaults"
   ],
   "scripts": {
-    "watch": "webpack --watch --mode=development",
+    "start": "webpack --watch --mode=development",
     "build": "webpack --mode=production"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "babel-loader": "^8.2.3",
     "core-js": "^3.21.1",
     "css-loader": "^6.6.0",
+    "howler": "^2.2.3",
     "mini-css-extract-plugin": "^2.5.3",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.49.9",

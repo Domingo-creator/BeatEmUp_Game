@@ -1,5 +1,7 @@
 import { cpuCharacter } from "./cpuCharacter";
 import { PlayerCharacter } from "./playerCharacter";
+import { Score } from "./score";
+import { Timer } from "./timer";
 
 export class Stage {
     constructor(game) {
@@ -13,12 +15,23 @@ export class Stage {
         this.killed_characters = [];
         this.lastEnemyHit = null;        
         this.player = new PlayerCharacter(game);
-        this.generateEnemy();
-        this.generateEnemy();
+        this.timer = new Timer(this.ctx, this.dimensions);
+        this.score = new Score(this.ctx, this.timer);
+        this.addNewEnemies();
+        this.startMusic();
+        this.gameOver = false;
         // this.pickStage()
     }
 
-    
+    startMusic() {
+        if(this.game.options.sound === 'on') {
+            var sound = new Howl({
+                src: ['../sounds/The_Dark_Amulet.mp3']
+            });
+              
+            sound.play();
+        }
+    }
 
     // pickStage() {
     //     let stageNum;
@@ -32,6 +45,11 @@ export class Stage {
     // }
 
     draw() {
+      if(this.flashScreen) {
+         this.ctx.fillStyle = 'white'
+         this.ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height) 
+         this.flashScreen = false;
+      }  else {
         var img = new Image();
         img.onload = () => {
             this.ctx.drawImage(img, 0, 0, this.dimensions.width, this.dimensions.height);
@@ -39,10 +57,15 @@ export class Stage {
         img.src = './images/stageBackground.png';
         this.player.drawCharacter();
         this.player.lifebar.drawLifebar();
+        this.timer.draw();
+        this.score.draw();
         this.enemies.forEach( enemy => enemy.drawCharacter())
         this.killed_characters.forEach( killedEnemy => killedEnemy.drawCharacter())
         if(this.lastEnemyHit) this.lastEnemyHit.lifebar.drawLifebar();
-        
+        // if(this.gameOver) {
+        //     if(!this.contiueScreen) this.continueScreen = 
+        // }
+      } 
     }
 
     move(command) {
@@ -50,6 +73,13 @@ export class Stage {
     }
     performAction(command) {
         this.player.performAction(command)
+    }
+
+    addNewEnemies() {
+        let totalEnemies = 2 + Math.floor(this.timer.time / 20)
+        while(this.enemies.length < totalEnemies) {
+            this.generateEnemy();
+        }
     }
 
     generateEnemy() {
@@ -76,8 +106,8 @@ export class Stage {
                 this.killed_characters.push(enemy);
                 setTimeout(() => this.killed_characters.shift(), 5000)
                 enemy.death();
+                this.score.increaseScore(enemy);
                 this.lastEnemyHit = null;
-                this.generateEnemy();  // remove this later
             }
         })
     }
@@ -87,7 +117,8 @@ export class Stage {
             this.killed_characters.push(this.player);
             setTimeout(() => this.killed_characters.shift(), 5000);
             this.player.death();
-            setTimeout( () => this.player = new PlayerCharacter(this.game), 6000);
+            // this.gameOver();
+            // setTimeout( () => this.player = new PlayerCharacter(this.game), 6000);
         }
     }
 
@@ -135,5 +166,9 @@ export class Stage {
                 }
         } 
         return false
+    }
+
+    startFlashScreen() {
+        this.flashScreen = true;
     }
  }

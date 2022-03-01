@@ -1,4 +1,4 @@
-
+import {Howl, Howler} from 'howler';
 import { Game } from './game.js'
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let game = new Game(canvas);
     
 
+   
 
     document.addEventListener('keydown', (e) => {
         // console.log(e.code)

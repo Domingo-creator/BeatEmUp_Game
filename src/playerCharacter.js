@@ -1,5 +1,7 @@
 import { Character } from "./character";
 
+
+
 export class PlayerCharacter extends Character{ 
     constructor(game) {
         super(game, [30, 450], 'left', 'knight', 'right', {height:110, width: 40})
@@ -11,6 +13,23 @@ export class PlayerCharacter extends Character{
         this.moveLockOut = false;
         this.moveSpeed = 1;
     }
+
+    HIT_SOUNDS = ['./sounds/player_sounds/hit/pain1.wav',
+                  './sounds/player_sounds/hit/pain2.wav',
+                  './sounds/player_sounds/hit/pain3.wav',
+                 ]
+
+    ATTACK_SOUNDS = ['./sounds/player_sounds/lAttack/hammer-1a.wav',
+                     './sounds/player_sounds/lAttack/hammer-1b.wav',
+                     './sounds/player_sounds/lAttack/sword-arm-2a.wav',
+                     './sounds/player_sounds/lAttack/sword-arm-2b.wav'
+                    ]
+
+    RUN_SOUNDS = ['./sounds/player_sounds/move/step_metal1.ogg',
+                  './sounds/player_sounds/move/step_metal2.ogg',
+                  './sounds/player_sounds/move/step_metal3.ogg',
+                  './sounds/player_sounds/move/step_metal4.ogg'
+                 ]
 
     lockOutMove() {
         this.moveLockOut = true;
@@ -60,6 +79,7 @@ export class PlayerCharacter extends Character{
     performAction(inputs) {
         if(!this.currentAction) {
             if (inputs.lAttack) {
+                this.getAttackSound();
                 this.performLightAttack();
             } else if (inputs.hAttack) {
                 this.performHeavyAttack();
@@ -72,6 +92,7 @@ export class PlayerCharacter extends Character{
     }
 
     updateNewPos() {
+        let prevPos = this.position.slice()
         if(this.stunned) {
             this.xVel = 0;
             this.yVel = 0;
@@ -82,6 +103,10 @@ export class PlayerCharacter extends Character{
         if(this.currentAction !== 'jump') {   
             if (this.checkYInbounds(this.position[1] + this.yVel)){
                 this.position[1] += this.yVel;
+            }
+           
+            if(prevPos[0] !== this.position[0] || prevPos[1] !== this.position[1]) {
+                this.getRunSound();
             }          
         } else {
             //if before apex
@@ -126,6 +151,56 @@ export class PlayerCharacter extends Character{
     //command sent all the way from game class keyUp(). janky, maybe fix
     dash(direction) {
         this.dashDirection = direction;
+    }
+
+    getRunSound() {
+        if(!this.runSoundTimeOut) {
+            this.runSoundTimeOut = true;
+            setTimeout( () => this.runSoundTimeOut = false, 1000)
+            if(this.game.options.sound === 'on') {
+                var sound = new Howl({
+                    src: ['./sounds/player_sounds/move/steps_platform.ogg']
+                });     
+                sound.play();
+            }
+        }
+    }
+
+    getAttackSound() {
+        if(!this.currentAttackSound) this.currentAttackSound = 0;
+        if(this.game.options.sound === 'on') {
+            var sound = new Howl({
+                src: [this.ATTACK_SOUNDS[this.currentAttackSound]]
+            });
+              
+            sound.play();
+        }
+        this.currentAttackSound++;
+        this.currentAttackSound = this.currentAttackSound % this.ATTACK_SOUNDS.length
+    }
+
+    getHitSound() {
+        if(!this.currentHitSound) this.currentHitSound = 0;
+        if(this.game.options.sound === 'on') {
+            var sound = new Howl({
+                src: [this.HIT_SOUNDS[this.currentHitSound]]
+            });
+              
+            sound.play();
+        }
+        this.currentHitSound++;
+        this.currentHitSound = this.currentHitSound % this.ATTACK_SOUNDS.length
+    }
+
+    getDeathSound() {
+        if(this.game.options.sound === 'on') {
+            var sound = new Howl({
+                src: ['./sounds/player_sounds/death/die2.wav']
+            });
+              
+            sound.play();
+        }
+
     }
 
 }
