@@ -29,8 +29,8 @@ export class ContinueScreen {
         this.ctx.fillText('Game Over', this.dimensions.width / 2 , this.dimensions.height/2 -100);
         this.ctx.fillStyle = 'yellow'
         this.ctx.font = '60px Sans-serif';
-        this.ctx.strokeText('Continue?',this.dimensions.width / 2 , this.dimensions.height/2 + 100);
-        this.ctx.fillText('Continue?', this.dimensions.width / 2 , this.dimensions.height/2 + 100); 
+        this.ctx.strokeText('Retry?',this.dimensions.width / 2 , this.dimensions.height/2 + 100);
+        this.ctx.fillText('Retry?', this.dimensions.width / 2 , this.dimensions.height/2 + 100); 
         this.ctx.font = '40px Sans-serif';
         this.ctx.fillStyle = this.optionSelected === 'Yes' ? 'yellow' : 'red'
         this.ctx.strokeText('Yes',this.dimensions.width / 2 -50 , this.dimensions.height - 60);

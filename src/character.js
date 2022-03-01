@@ -63,7 +63,7 @@ export class Character {
                 // this.game.ctx.fillRect(this.position[0] + spriteWidth,this.position[1] + spriteSheet.height, 15, 70)
         };
         if (this.model === 'knight') {
-            spriteSheet.src = `./images/${this.model}/_${this.currentAnimation}_${this.directionFaced}.png`;
+            spriteSheet.src = `./images/${this.model}/${this.currentAnimation}_${this.directionFaced}.png`;
         } else {
             spriteSheet.src = `./images/${this.model}/${this.model}_${this.directionFaced}.png`;
         }
