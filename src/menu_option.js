@@ -9,7 +9,10 @@ export class MenuOption {
     draw(ctx) {
         // console.log(this.selectedStatus)
         ctx.fillStyle = this.selectedStatus ? 'yellow' : 'red'
-        ctx.font = '30px Comic Sans MS';
+        ctx.strokeStyle = 'black'
+        ctx.font = '30px Sans-serif';
+        ctx.lineWidth = 8;
+        ctx.strokeText(`${this.optionText}`, this.position[0], this.position[1]);
         ctx.fillText(`${this.optionText}`, this.position[0], this.position[1]);
     }
 

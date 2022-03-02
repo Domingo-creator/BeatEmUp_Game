@@ -82,7 +82,7 @@ export class StartMenu {
 
     createMainMenuOptions() {
         this.lockoutMenu();
-        this.headline = 'Beat-Em-Up';
+        this.headline = 'Skeletal Swarm';
         this.selectedIdx = 0;
         // const startOption = new MenuOption('Start', [this.dimensions.width/2, this.dimensions.height/2], this.game.startGame.bind(this.game), true)
         const startOption = new MenuOption('Start', [this.dimensions.width/2, this.dimensions.height/2], this.startGame.bind(this), true)
@@ -154,7 +154,26 @@ export class StartMenu {
         };
         img.src = './images/gameBackgrounds/titleMenubackground.jpg'; 
         //draw Controls
-        
+        var wasd = new Image();
+        wasd.onload = () => {
+            this.ctx.drawImage(wasd, this.dimensions.width /1.38, this.dimensions.height / 1.11, 80, 60)
+        }
+        wasd.src = './images/controls/wasd.png'
+        var jKey = new Image();
+        jKey.onload = () => {
+            this.ctx.drawImage(jKey, this.dimensions.width /1.05, this.dimensions.height / 1.06, 30, 30)
+        }
+        jKey.src = './images/controls/J_Key.png'
+
+        this.ctx.fillStyle = 'White'
+        this.ctx.font = '22px Sans-serif';
+        this.ctx.strokeStyle = 'black'
+        this.ctx.lineWidth = 1
+        this.ctx.fillText('Movement:', this.dimensions.width /1.55, this.dimensions.height / 1.02);
+        this.ctx.fillText('Select:', this.dimensions.width /1.115, this.dimensions.height / 1.02);
+        this.ctx.strokeText('Movement:', this.dimensions.width /1.55, this.dimensions.height / 1.02);
+        this.ctx.strokeText('Select:', this.dimensions.width /1.115, this.dimensions.height / 1.02);
+
 
         //draw lightning
         if(this.lightningReady) {
@@ -183,10 +202,13 @@ export class StartMenu {
             spriteSheet.src = './images/lightning/lightning.png'; 
         }
 
-        ctx.font = '50px Comic Sans MS';
-        ctx.fillStyle = "red";
-        ctx.textAlign = "center";
-        ctx.fillText(`${this.headline}`, this.dimensions.width/2, this.dimensions.height/5);
+        this.ctx.font = '80px Sans-serif';
+        this.ctx.fillStyle = "White";
+        this.ctx.textAlign = "center";
+        this.ctx.strokeStyle = 'black'
+        this.ctx.lineWidth = 8;
+        this.ctx.strokeText(`${this.headline}`, this.dimensions.width/2, this.dimensions.height/5);
+        this.ctx.fillText(`${this.headline}`, this.dimensions.width/2, this.dimensions.height/5);
         // console.log(this)
         this.menuOptions.forEach( option => option.draw(ctx))
     }
