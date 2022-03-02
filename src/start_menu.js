@@ -153,6 +153,9 @@ export class StartMenu {
             this.ctx.drawImage(img, 0, 0, this.dimensions.width, this.dimensions.height);
         };
         img.src = './images/gameBackgrounds/titleMenubackground.jpg'; 
+        //draw Controls
+        
+
         //draw lightning
         if(this.lightningReady) {
             const data = BackgroundModels.lightning[this.getRandomType()]
@@ -237,4 +240,6 @@ export class StartMenu {
     stopMusic() {
         this.sound.stop();
     }
+
+ 
 }
