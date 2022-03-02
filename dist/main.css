@@ -62,9 +62,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20vh;;
+    margin-top: 20vh;
+    animation-duration: 5s;
+    animation-name: fade-in
 }
 
+@keyframes fade-in {
+    0%   {opacity: 0%;}
+    50%  {opacity: 0%;}
+    60%  {opacity: 35%;}
+    75%  {opacity: 65%;}
+    100% {opacity: 100%;}
+  }
 
 
 .enter-sign {
@@ -87,8 +96,22 @@
     max-width: 15vw;
     max-width: 15vw;
     justify-self: space-between;
-    
+    animation-duration: 2s;
+    animation-name: roll-in;
 }
+
+  
+@keyframes roll-in {
+    from {
+      margin-top: -40%;
+      width: 300%;
+    }
+  
+    to {
+      margin-top: 0%;
+      width: 100%;
+    }
+  }
 
 
 
