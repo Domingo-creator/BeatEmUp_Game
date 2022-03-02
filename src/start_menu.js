@@ -184,7 +184,7 @@ export class StartMenu {
 
     startGame() {
         this.stopMusic()
-        this.game.startGame();
+        this.game.startInstructions();
     }
 
     adjustControls() {

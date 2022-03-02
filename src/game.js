@@ -1,4 +1,5 @@
 import { Character } from "./character";
+import { GameInstructions } from "./gameInstruction";
 import { Options } from "./options";
 import { PlayerCharacter } from "./playerCharacter";
 import { Stage } from "./stage";
@@ -28,6 +29,9 @@ export class Game {
         this.currentScreen = new StartMenu(this);
     }
     
+    startInstructions() {
+        this.currentScreen = new GameInstructions(this)
+    }
 
     startGame() {
         this.currentScreen = new Stage(this) 
