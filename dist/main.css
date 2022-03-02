@@ -25,6 +25,17 @@
     background-color: black;
 }
 
+.mute-button {
+
+    display: float;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255,255,255,0);
+    border: none;
+}
+
+
 .background-container {
     background-image: url('../images/mainPage/openingPageBackground.jpg') ;
     width: 100%;
@@ -84,6 +95,7 @@
     justify-self: space-between;
     
 }
+
 
 
 /*!*************************************************************************************************************************************!*\

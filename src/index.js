@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let clickHereSign = document.createElement('img')
     let arcadeOpenSign = document.createElement('img')
     let clickContainer = document.createElement('div')
+    let muteButton = document.querySelector('.mute-button')
     enterSign.setAttribute('src', './images/mainPage/neon_enter_sign.gif')
     clickHereSign.setAttribute('src', './images/mainPage/neon_click_here.gif')
     arcadeOpenSign.setAttribute('src', './images/mainPage/arcadeSign.gif')
@@ -21,6 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
     clickContainer.appendChild(clickHereSign)
     backgroundContainer.appendChild(clickContainer)
     let game;
+
+
+    muteButton.addEventListener( 'click', (e) => {
+        if(muteButton.value === 'mute') {
+            
+        }
+    })
 
     clickContainer.addEventListener( 'click', (e) => {
         //hide neon signs

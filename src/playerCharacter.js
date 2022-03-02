@@ -160,7 +160,8 @@ export class PlayerCharacter extends Character{
             if(this.game.options.sound === 'on') {
                 var sound = new Howl({
                     src: ['./sounds/player_sounds/move/steps_platform.ogg']
-                });     
+                }); 
+                sound.volume(this.game.options.volume.SFX * .1)
                 sound.play();
             }
         }
@@ -172,7 +173,7 @@ export class PlayerCharacter extends Character{
             var sound = new Howl({
                 src: [this.ATTACK_SOUNDS[this.currentAttackSound]]
             });
-              
+            sound.volume(this.game.options.volume.SFX * .1)
             sound.play();
         }
         this.currentAttackSound++;
@@ -185,7 +186,7 @@ export class PlayerCharacter extends Character{
             var sound = new Howl({
                 src: [this.HIT_SOUNDS[this.currentHitSound]]
             });
-              
+            sound.volume(this.game.options.volume.SFX * .1)
             sound.play();
         }
         this.currentHitSound++;
@@ -197,7 +198,7 @@ export class PlayerCharacter extends Character{
             var sound = new Howl({
                 src: ['./sounds/player_sounds/death/die2.wav']
             });
-              
+            sound.volume(this.game.options.volume.SFX * .1)
             sound.play();
         }
 

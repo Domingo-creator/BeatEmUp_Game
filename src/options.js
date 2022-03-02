@@ -12,6 +12,9 @@ export class Options {
                         };
         this.difficulty = 'easy';
         this.stage = 'random';
-        this.sound = 'on'
+        this.sound = 'on';
+        this.volume = { BGM: .5,
+                        SFX: .5
+                      };
     }
 }

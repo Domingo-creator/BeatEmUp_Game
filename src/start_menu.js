@@ -7,9 +7,9 @@ export class StartMenu {
         this.game = game;
         this.dimensions = game.dimensions;
         this.ctx = game.ctx;
-        this.createMainMenuOptions();
+        this.createMainMenuOptions()
         this.menuReady = false;
-        setTimeout( () => this.menuReady = true, 1000)
+        setTimeout( () => this.menuReady = true, 4000)
         this.lightningReady = true;
         this.framesDrawn = 0;
         this.currentFrame = 0;
@@ -57,11 +57,11 @@ export class StartMenu {
 
     playMenuMoveSound() {
         if(this.game.options.sound === 'on') {
-            var sound = new Howl({
+            this.sound = new Howl({
                 src: ['./sounds/menu_sounds/MENU_Pick.wav']
             });
-            
-            sound.play();
+            this.sound.volume(this.game.options.volume.SFX * .1)  
+            this.sound.play();
         }
 
     }
@@ -69,9 +69,13 @@ export class StartMenu {
     
 
     lockoutMenu() {
-        this.menuReady = false;
-        this.playMenuMoveSound();
-        setTimeout( () => this.menuReady = true, 200)
+        if(this.menuReady) {
+            this.playMenuMoveSound(); 
+            this.menuReady = false;
+            setTimeout( () => this.menuReady = true, 200)
+        } else {
+            setTimeout( () => this.menuReady = true, 4000)
+        }
     }
 
     createMainMenuOptions() {
@@ -223,7 +227,7 @@ export class StartMenu {
             this.sound = new Howl({
                 src: ['./sounds/Searching.ogg']
             });
-              
+            this.sound.volume(this.game.options.volume.BGM * .1)  
             this.sound.play();
         }
     }
