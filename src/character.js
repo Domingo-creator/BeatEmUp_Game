@@ -88,12 +88,7 @@ export class Character {
                     this.currentFrame = data.frames - 1;
                 }
             }
-            // if(this.currentAnimation === 'death'){
-            //     console.log(data.frames - 1)
-            //     console.log(this.directionFaced)
-            //     console.log(data)
-            //     console.log(this.currentFrame);
-            // }
+         
             this.framesDrawn = 0;
         }
     
