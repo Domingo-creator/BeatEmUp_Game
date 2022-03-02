@@ -26,7 +26,7 @@ export class Stage {
     startMusic() {
         if(this.game.options.sound === 'on') {
             this.sound = new Howl({
-                src: ['../sounds/The_Dark_Amulet.mp3']
+                src: ['./sounds/The_Dark_Amulet.mp3']
             });
               
             this.sound.play();
