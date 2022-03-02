@@ -143,7 +143,7 @@ export class StartMenu {
         img.onload = () => {
             this.ctx.drawImage(img, 0, 0, this.dimensions.width, this.dimensions.height);
         };
-        img.src = '../images/gameBackgrounds/titleMenuBackground.jpg';
+        img.src = './images/gameBackgrounds/titleMenuBackground.jpg';
         //draw lightning
         if(this.lightningReady) {
 
