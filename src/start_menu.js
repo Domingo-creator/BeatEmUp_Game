@@ -148,7 +148,6 @@ export class StartMenu {
         };
         img.src = './images/gameBackgrounds/titleMenubackground.jpg'; 
         //draw lightning
-        console.log(this.lightningReady)
         if(this.lightningReady) {
             const data = BackgroundModels.lightning[this.getRandomType()]
             const spriteSheet = new Image();
