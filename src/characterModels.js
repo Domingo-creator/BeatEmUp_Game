@@ -18,5 +18,13 @@ export const CharacterModels = {
                   hit: {row:2, num_rows: 5, frames: 3, max_frames: 13, left_offset: 0, right_offset:0, left_pos_offset:-80, right_pos_offset: -80, top_offset_multiplier: 1.65},
                   Run: {row:3, num_rows: 5, frames: 12, max_frames: 13, left_offset: 0, right_offset:0, left_pos_offset:-80, right_pos_offset: -80, top_offset_multiplier: 1.35},
 
-        }
+        },
+
+}
+
+export const backgroundModels = {
+        
+        lightning: {typeA: {row: 1, num_rows: 2,frames:6, max_frames: 6, left_offset:0,right_offset:0,left_pos_offset: 0, right_pos_offset: 0, top_offset_multiplier: 0},
+                    typeB: {row: 2, num_rows: 2,frames:6, max_frames: 6, left_offset:0,right_offset:0,left_pos_offset: 0, right_pos_offset: 0, top_offset_multiplier: 0}
+                   }
 }

@@ -9,6 +9,7 @@ export class StartMenu {
         this.createMainMenuOptions();
         this.menuReady = false;
         setTimeout( () => this.menuReady = true, 1000)
+        this.lightningReady = true;
     }
 
     move(inputs) {
@@ -136,8 +137,18 @@ export class StartMenu {
     }
 
     draw(ctx) {
-        ctx.fillStyle = "rgb(59, 102, 242)";
-        ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height)
+        // ctx.fillStyle = "rgb(59, 102, 242)";
+        // ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height)
+        var img = new Image();
+        img.onload = () => {
+            this.ctx.drawImage(img, 0, 0, this.dimensions.width, this.dimensions.height);
+        };
+        img.src = './images/gameBackgrounds/titleMenuBackground.jpg';
+        //draw lightning
+        if(this.lightningReady) {
+
+        }
+
         ctx.font = '50px Comic Sans MS';
         ctx.fillStyle = "red";
         ctx.textAlign = "center";
@@ -158,5 +169,10 @@ export class StartMenu {
     adjustSound(soundStatus) {
         this.game.options.sound = soundStatus;
         this.createOptionsMenuOptions()
+    }
+
+    startLightningTimeout() {
+        //get time between 1 and 5
+        setTimeout( () => this.lightningReady = true, Math.random() * 5);
     }
 }

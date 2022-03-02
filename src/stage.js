@@ -57,7 +57,7 @@ export class Stage {
         img.onload = () => {
             this.ctx.drawImage(img, 0, 0, this.dimensions.width, this.dimensions.height);
         };
-        img.src = './images/stageBackground.png';
+        img.src = './images/gameBackgrounds/stageBackground.png';
         this.player.drawCharacter();
         this.player.lifebar.drawLifebar();
         this.timer.draw();
