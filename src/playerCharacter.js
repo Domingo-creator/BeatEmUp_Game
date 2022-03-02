@@ -1,7 +1,6 @@
 import { Character } from "./character";
 
 
-
 export class PlayerCharacter extends Character{ 
     constructor(game) {
         super(game, [30, 450], 'knight', 'right', {height:110, width: 40})

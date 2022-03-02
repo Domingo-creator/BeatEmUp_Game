@@ -2,6 +2,8 @@ import { Howl } from "howler";
 import { BackgroundModels } from "./characterModels";
 import { MenuOption } from "./menu_option";
 
+
+
 export class StartMenu {
     constructor(game) {
         this.game = game;

@@ -1,4 +1,4 @@
-import {Howl, Howler} from 'howler';
+
 import { Game } from './game.js'
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     muteButton.addEventListener( 'click', (e) => {
         if(muteButton.value === 'mute') {
-            
+
         }
     })
 

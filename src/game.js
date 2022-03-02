@@ -4,6 +4,8 @@ import { Options } from "./options";
 import { PlayerCharacter } from "./playerCharacter";
 import { Stage } from "./stage";
 import { StartMenu } from "./start_menu";
+import {Howl, Howler} from 'howler';
+
 
 export class Game {
     constructor(canvas) {

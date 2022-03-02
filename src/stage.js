@@ -4,6 +4,7 @@ import { PlayerCharacter } from "./playerCharacter";
 import { Score } from "./score";
 import { Timer } from "./timer";
 
+
 export class Stage {
     constructor(game) {
         this.game = game;
