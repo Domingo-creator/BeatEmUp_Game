@@ -2,11 +2,12 @@
     margin-top: 10vh;
     display: none;
     justify-content: center;
+    align-items: center;
 }
 
-/* canvas-game {
-
-} */
+#game-canvas {
+    padding-bottom: 20vh;
+}  
 
 
 

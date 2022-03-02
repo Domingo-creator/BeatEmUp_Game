@@ -22,7 +22,7 @@ export const CharacterModels = {
 
 }
 
-export const backgroundModels = {
+export const BackgroundModels = {
         
         lightning: {typeA: {row: 1, num_rows: 2,frames:6, max_frames: 6, left_offset:0,right_offset:0,left_pos_offset: 0, right_pos_offset: 0, top_offset_multiplier: 0},
                     typeB: {row: 2, num_rows: 2,frames:6, max_frames: 6, left_offset:0,right_offset:0,left_pos_offset: 0, right_pos_offset: 0, top_offset_multiplier: 0}

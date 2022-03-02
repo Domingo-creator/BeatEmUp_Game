@@ -1,4 +1,5 @@
 import { Howl } from "howler";
+import { BackgroundModels } from "./characterModels";
 import { MenuOption } from "./menu_option";
 
 export class StartMenu {
@@ -10,6 +11,9 @@ export class StartMenu {
         this.menuReady = false;
         setTimeout( () => this.menuReady = true, 1000)
         this.lightningReady = true;
+        this.framesDrawn = 0;
+        this.currentFrame = 0;
+        this.startMusic()
     }
 
     move(inputs) {
@@ -74,7 +78,8 @@ export class StartMenu {
         this.lockoutMenu();
         this.headline = 'Beat-Em-Up';
         this.selectedIdx = 0;
-        const startOption = new MenuOption('Start', [this.dimensions.width/2, this.dimensions.height/2], this.game.startGame.bind(this.game), true)
+        // const startOption = new MenuOption('Start', [this.dimensions.width/2, this.dimensions.height/2], this.game.startGame.bind(this.game), true)
+        const startOption = new MenuOption('Start', [this.dimensions.width/2, this.dimensions.height/2], this.startGame.bind(this), true)
         const optionsOption = new MenuOption('Options', [this.dimensions.width/2, this.dimensions.height/1.6], this.createOptionsMenuOptions.bind(this))
         this.menuOptions = [startOption, optionsOption];
     }
@@ -137,16 +142,37 @@ export class StartMenu {
     }
 
     draw(ctx) {
-        // ctx.fillStyle = "rgb(59, 102, 242)";
-        // ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height)
         var img = new Image();
         img.onload = () => {
             this.ctx.drawImage(img, 0, 0, this.dimensions.width, this.dimensions.height);
         };
-        img.src = './images/gameBackgrounds/titleMenubackground.jpg'; //
+        img.src = './images/gameBackgrounds/titleMenubackground.jpg'; 
         //draw lightning
+        console.log(this.lightningReady)
         if(this.lightningReady) {
+            const data = BackgroundModels.lightning[this.getRandomType()]
+            const spriteSheet = new Image();
+            spriteSheet.onload = () => {
+                let spriteHeight = spriteSheet.height / data.num_rows;
+                let spriteWidth = spriteSheet.width / data.max_frames;
+                let srcX = spriteWidth * this.currentFrame;
+                let srcY = spriteHeight * data.row
+                let scaleFactor = 3
 
+                if(!this.currentLightningPos) this.currentLightningPos = this.getrandomLightningPos()
+                this.ctx.drawImage(spriteSheet, srcX, srcY, spriteWidth, spriteHeight, this.currentLightningPos, 0, spriteWidth * scaleFactor, spriteHeight * scaleFactor)
+                this.framesDrawn++
+                if( this.framesDrawn === 4){
+                    this.currentFrame++
+                    if(this.currentFrame > data.max_frames) {
+                        this.lightningReady = false
+                        this.currentLightningPos = null;
+                        this.startLightningTimeout();
+                    }
+                    this.framesDrawn = 0;
+                }
+            }
+            spriteSheet.src = './images/lightning/lightning.png'; 
         }
 
         ctx.font = '50px Comic Sans MS';
@@ -155,6 +181,11 @@ export class StartMenu {
         ctx.fillText(`${this.headline}`, this.dimensions.width/2, this.dimensions.height/5);
         // console.log(this)
         this.menuOptions.forEach( option => option.draw(ctx))
+    }
+
+    startGame() {
+        this.stopMusic()
+        this.game.startGame();
     }
 
     adjustControls() {
@@ -173,6 +204,32 @@ export class StartMenu {
 
     startLightningTimeout() {
         //get time between 1 and 5
-        setTimeout( () => this.lightningReady = true, Math.random() * 5);
+        setTimeout( () => {
+            this.lightningReady = true;
+            this.currentFrame = 0;
+        }, Math.random() * 3000);
+    }
+
+    getRandomType() {
+        return Math.floor(Math.random() * 2) === 0 ? 'typeA' : 'typeB'
+    }
+
+    getrandomLightningPos() {
+        return Math.floor(Math.random() * this.dimensions.width)
+    }
+
+
+    startMusic() {
+        if(this.game.options.sound === 'on') {
+            this.sound = new Howl({
+                src: ['./sounds/Searching.ogg']
+            });
+              
+            this.sound.play();
+        }
+    }
+
+    stopMusic() {
+        this.sound.stop();
     }
 }

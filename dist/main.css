@@ -5,11 +5,12 @@
     margin-top: 10vh;
     display: none;
     justify-content: center;
+    align-items: center;
 }
 
-/* canvas-game {
-
-} */
+#game-canvas {
+    padding-bottom: 20vh;
+}  
 
 
 
@@ -21,6 +22,7 @@
 .outer-container {
     height: 100vh;
     width: 100vw;
+    background-color: black;
 }
 
 .background-container {
@@ -29,6 +31,7 @@
     height: 100vh;
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;

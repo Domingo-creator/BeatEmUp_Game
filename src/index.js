@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Display Game Screen after zoom animation
         setTimeout( () => {
             backgroundContainer.style.backgroundImage = "url('./images/mainPage/arcade_screen_background.jpg')"
-            // backgroundContainer.style.
+            backgroundContainer.style.backgroundSize = 'contain'
             document.querySelector('.canvas-container').style.display = 'flex';
             let canvas = document.getElementById('game-canvas') 
             game = new Game(canvas);
