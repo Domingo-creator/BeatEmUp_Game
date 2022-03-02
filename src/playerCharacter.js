@@ -4,7 +4,7 @@ import { Character } from "./character";
 
 export class PlayerCharacter extends Character{ 
     constructor(game) {
-        super(game, [30, 450], 'left', 'knight', 'right', {height:110, width: 40})
+        super(game, [30, 450], 'knight', 'right', {height:110, width: 40})
         this.blockGuage = 100;
         this.blockStatus = false;  //false if not blocking
         this.score = 0;

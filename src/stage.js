@@ -13,11 +13,10 @@ export class Stage {
         //list of stages.  eventually probably want to replace with images
         //list properties: sky-color, ground-color
         this.enemies = [];
-        this.killed_characters = [];
-        this.lastEnemyHit = null;        
+        this.killed_characters = [];    
         this.player = new PlayerCharacter(game);
         this.timer = new Timer(this.ctx, this.dimensions);
-        this.score = new Score(this.ctx, this.timer);
+        this.score = new Score(this.ctx, this.dimensions, this.timer);
         this.addNewEnemies();
         this.startMusic();
         this.gameOver = false;
@@ -63,9 +62,14 @@ export class Stage {
         this.player.lifebar.drawLifebar();
         this.timer.draw();
         this.score.draw();
-        this.enemies.forEach( enemy => enemy.drawCharacter())
-        this.killed_characters.forEach( killedEnemy => killedEnemy.drawCharacter())
-        if(this.lastEnemyHit) this.lastEnemyHit.lifebar.drawLifebar();
+        this.enemies.forEach( enemy => {
+            enemy.drawCharacter()
+            enemy.lifebar.drawLifebar();
+        })
+        this.killed_characters.forEach( killedEnemy => {
+            killedEnemy.drawCharacter()
+            killedEnemy.lifebar.drawLifebar()
+        })
         if(this.gameOver) {
             if(!this.continueScreen) this.continueScreen = new ContinueScreen(this.game);
             this.continueScreen.draw();
@@ -123,7 +127,6 @@ export class Stage {
                 setTimeout(() => this.killed_characters.shift(), 5000)
                 enemy.death();
                 this.score.increaseScore(enemy);
-                this.lastEnemyHit = null;
             }
         })
     }
@@ -146,7 +149,6 @@ export class Stage {
                     switch(this.player.currentAction) {
                         case 'lAttack':
                             if (!enemy.stunned) {
-                                this.lastEnemyHit = enemy;
                                 enemy.takeDamage(15);
                             }
                             break;

@@ -2,7 +2,7 @@ import { Character } from "./character";
 
 export class cpuCharacter extends Character{
     constructor(game, startPos, enermyType = 'skeleton', scoreBase = 50) {
-        super(game, startPos, 'right', enermyType, Math.floor(Math.random() * 2) === 1 ? 'left' : 'right')
+        super(game, startPos, enermyType, Math.floor(Math.random() * 2) === 1 ? 'left' : 'right')
         this.hitBoxRange = [175, 50]
         this.agressionRating = this.getAggressionRating() // a number between 0-100, indicating likelyhood that enemy attacks while in range
         this.ActionLockOut = false;

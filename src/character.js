@@ -2,14 +2,14 @@ import { CharacterModels } from "./characterModels";
 import { LifeBar } from "./lifebar";
 
 export class Character {
-    constructor(game, startPos, lifebarSide, model, startingDirection = 'left', size ={ height: 110, width: 40}, items = [], powerups = []) {
+    constructor(game, startPos, model, startingDirection = 'left', size ={ height: 110, width: 40}, items = [], powerups = []) {
         this.game = game;
         this.model = model;
         this.currentAnimation = 'Idle'
-        this.lifebar = new LifeBar(this.game.ctx, this.game.dimensions, lifebarSide);
+        this.size = size;
+        this.lifebar = new LifeBar(this.game.ctx, this.game.dimensions, this);
         this.position = startPos;
         this.stunned = false;
-        this.size = size;
         this.currentAction = null;
         this.hitbox = []
         this.directionFaced = startingDirection;

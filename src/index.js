@@ -39,20 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
             let canvas = document.getElementById('game-canvas') 
             game = new Game(canvas);
             enterGameCheckbox.checked = false;
-        }, 5000);
+        
     
    
 
-        document.addEventListener('keydown', (e) => {
-            // console.log(e.code)
-            let command = Object.keys(game.options.controls).filter( key => game.options.controls[key] === e.code)
-            if (command.length) game.setKeyDown(command[0]);
-        })
+            document.addEventListener('keydown', (e) => {
+                // console.log(e.code)
+                let command = Object.keys(game.options.controls).filter( key => game.options.controls[key] === e.code)
+                if (command.length) game.setKeyDown(command[0]);
+            })
 
-        document.addEventListener('keyup', (e) => {
-            let command = Object.keys(game.options.controls).filter( key => game.options.controls[key] === e.code)
-            if (command.length) game.setKeyUp(command[0]);
+            document.addEventListener('keyup', (e) => {
+                let command = Object.keys(game.options.controls).filter( key => game.options.controls[key] === e.code)
+                if (command.length) game.setKeyUp(command[0]);
         })
+        }, 5000);
     })
 })
 
