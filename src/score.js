@@ -21,7 +21,6 @@ export class Score {
                 break;
         }
         let timeMultiplier = 1 + Math.floor(this.timer.time / 20)
-        console.log(difficultyMultiplier)
         this.score += Math.floor(enemy.scoreBase * timeMultiplier * difficultyMultiplier);
     }
 
