@@ -9,7 +9,6 @@ export class Score {
 
     increaseScore(enemy) {
         let difficultyMultiplier;
-        console.log(this.game.options)
         switch(this.game.options.difficulty) {
             case 'easy':
                 difficultyMultiplier = 1;
