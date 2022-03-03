@@ -109,6 +109,7 @@
     height: auto;
     bottom: .4vh;
     left: 2vw;
+    opacity: 50%;
     animation-duration: 2s;
     animation-name: slide-in;
 }
