@@ -15,7 +15,8 @@ Jump
 Receive damage
 In addition, this project will include: -There will be a start menu -There will be an options menu
 
-####Wireframes wireframes
+####Wireframes
+[wireframes](https://wireframe.cc/i5caUj)
 
 #####Technologies, Libraries, APIs -canvas: to help me draw my game on the screen -Vanilla JS DOM manipulation
 
