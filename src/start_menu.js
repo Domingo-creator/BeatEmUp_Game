@@ -84,7 +84,6 @@ export class StartMenu {
         this.lockoutMenu();
         this.headline = 'Skeletal Swarm';
         this.selectedIdx = 0;
-        // const startOption = new MenuOption('Start', [this.dimensions.width/2, this.dimensions.height/2], this.game.startGame.bind(this.game), true)
         const startOption = new MenuOption('Start', [this.dimensions.width/2, this.dimensions.height/2], this.startGame.bind(this), true)
         const optionsOption = new MenuOption('Options', [this.dimensions.width/2, this.dimensions.height/1.6], this.createOptionsMenuOptions.bind(this))
         this.menuOptions = [startOption, optionsOption];
@@ -201,15 +200,22 @@ export class StartMenu {
             }
             spriteSheet.src = './images/lightning/lightning.png'; 
         }
-
-        this.ctx.font = '80px Sans-serif';
-        this.ctx.fillStyle = "White";
         this.ctx.textAlign = "center";
-        this.ctx.strokeStyle = 'black'
-        this.ctx.lineWidth = 8;
-        this.ctx.strokeText(`${this.headline}`, this.dimensions.width/2, this.dimensions.height/5);
-        this.ctx.fillText(`${this.headline}`, this.dimensions.width/2, this.dimensions.height/5);
-        // console.log(this)
+        if(this.headline === 'Skeletal Swarm') {
+            let title = new Image();
+            title.onload = () => {
+                this.ctx.drawImage(title, -5, this.dimensions.height/5, title.width * .9, title.height * .9)
+            }
+            title.src = './images/gameBackgrounds/gameLogo.png'
+
+        } else {
+            this.ctx.font = '80px Sans-serif';
+            this.ctx.fillStyle = "White";
+            this.ctx.strokeStyle = 'black'
+            this.ctx.lineWidth = 8;
+            this.ctx.strokeText(`${this.headline}`, this.dimensions.width/2, this.dimensions.height/5);
+            this.ctx.fillText(`${this.headline}`, this.dimensions.width/2, this.dimensions.height/5);
+        }
         this.menuOptions.forEach( option => option.draw(ctx))
     }
 
