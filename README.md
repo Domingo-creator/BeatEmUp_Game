@@ -25,7 +25,7 @@ In addition, this project will include:
 
 ![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/blob/master/images/screenshots/titleScreenScreenshot.png)
 
-![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/blob/master/images/screenshots/inGameScreenScreenshot.png)
+![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/blob/master/images/screenshots/inGameScreenshot.png)
 
 #####Technologies, Libraries, APIs 
 -Canvas: to help me draw my game on the screen 
