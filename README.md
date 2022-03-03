@@ -1,4 +1,4 @@
-#BeatEmUp_Game AKA Skeletal Swarm
+#BeatEmUp_Game AKA Skeletal Swarm:
 A fun JS beat-em-up game
 
 LIVE-LINK: https://domingo-creator.github.io/BeatEmUp_Game/
