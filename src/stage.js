@@ -33,7 +33,8 @@ export class Stage {
     startMusic() {
         if(this.game.options.sound === 'on') {
             this.backgroundMusic = new Howl({
-                src: ['./sounds/The_Dark_Amulet.mp3']
+                src: ['./sounds/The_Dark_Amulet.mp3'],
+                loop: true
             });
             this.backgroundMusic.volume(this.game.options.volume.BGM * .1);
             this.backgroundMusic.play();
@@ -157,12 +158,9 @@ export class Stage {
                                 enemy.takeDamage(15);
                             }
                             break;
-                        case 'hAttack':
-                            enemy.takeDamage(30)
-                            break;
-                        case 'throw':
-                            enemy.takeDamage(50)
-                            break
+                        // case 'hAttack':
+                        //     enemy.takeDamage(30)
+                        //     break;
                     }
                 }
             })
