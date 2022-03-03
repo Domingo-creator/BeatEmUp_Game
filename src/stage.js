@@ -31,14 +31,13 @@ export class Stage {
     // }
 
     startMusic() {
-        if(this.game.options.sound === 'on') {
-            this.backgroundMusic = new Howl({
-                src: ['./sounds/The_Dark_Amulet.mp3'],
-                loop: true
-            });
-            this.backgroundMusic.volume(this.game.options.volume.BGM * .1);
-            this.backgroundMusic.play();
-        }
+        this.backgroundMusic = new Howl({
+            src: ['./sounds/The_Dark_Amulet.mp3'],
+            loop: true
+        });
+        this.backgroundMusic.volume(this.game.options.volume.BGM * .1);
+        this.backgroundMusic.play();
+        if(this.game.options.sound === 'off') this.backgroundMusic.mute(true)
     }
 
     stopMusic() {

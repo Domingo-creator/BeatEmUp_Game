@@ -262,14 +262,13 @@ export class StartMenu {
 
 
     startMusic() {
-        if(this.game.options.sound === 'on') {
-            this.backgroundMusic = new Howl({
-                src: ['./sounds/Searching.ogg'],
-                loop: true
-            });
-            this.backgroundMusic.volume(this.game.options.volume.BGM * .1)  
-            this.backgroundMusic.play();
-        }
+        this.backgroundMusic = new Howl({
+            src: ['./sounds/Searching.ogg'],
+            loop: true
+        });
+        this.backgroundMusic.volume(this.game.options.volume.BGM * .1)  
+        this.backgroundMusic.play();
+        if(this.game.options.sound === 'off') this.backgroundMusic.mute(true)
     }
 
     stopMusic() {
