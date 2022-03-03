@@ -3,7 +3,7 @@ A fun JS beat-em-up game
 
 LIVE-LINK: https://domingo-creator.github.io/BeatEmUp_Game/
 
-##Background This is a fun retro style beat-em-up game similar to the old double dragon/battletoads games. You will will be able to move back and forth accross the stage and battle with the incoming enemies. You have a limited health bar and your score is tracked.
+##Background This is a fun retro style beat-em-up game similar to the old double dragon/battletoads games. You will will be able to move back and forth accross the stage and battle with the incoming enemies. You have a limited health bar and your score is tracked.  As time goes on, the number of enemies on screen will increase.  Survive as long as you can.
 
 ###Functionality & MVPs
 
@@ -18,7 +18,9 @@ In addition, this project will include: -There will be a start menu -There will 
 ####Wireframes
 [wireframes](https://wireframe.cc/i5caUj)
 
-#####Technologies, Libraries, APIs -canvas: to help me draw my game on the screen -Vanilla JS DOM manipulation
+#####Technologies, Libraries, APIs 
+-canvas: to help me draw my game on the screen 
+-Vanilla JS DOM manipulation
 
 ######Implementation Timeline:
 
