@@ -23,9 +23,9 @@ In addition, this project will include:
 ####Wireframes
 [wireframes](https://wireframe.cc/i5caUj)
 
-![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/images/screenshots/titleScreenScreenshot.png?raw=true)
+![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/blob/master/images/screenshots/titleScreenScreenshot.png)
 
-![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/images/screenshots/inGameScreenScreenshot.png?raw=true)
+![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/blob/master/images/screenshots/inGameScreenScreenshot.png)
 
 #####Technologies, Libraries, APIs 
 -Canvas: to help me draw my game on the screen 
