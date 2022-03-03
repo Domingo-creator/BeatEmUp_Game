@@ -19,7 +19,16 @@ export class Stage {
         this.addNewEnemies();
         this.startMusic();
         this.gameOver = false;
+        // this.loadBackground()
     }
+
+    // loadBackground () {
+    //     let img = new Image();
+    //     img.onload = () => {
+    //       this.background = img  
+    //     }
+    //     img.src = './images/gameBackgrounds/stageBackground.png';
+    // }
 
     startMusic() {
         if(this.game.options.sound === 'on') {

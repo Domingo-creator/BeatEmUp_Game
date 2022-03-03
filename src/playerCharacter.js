@@ -83,7 +83,7 @@ export class PlayerCharacter extends Character{
             } else if (inputs.hAttack) {
                 this.performHeavyAttack();
             } else if (inputs.jump) {
-                this.jump()
+                if(!this.jumpCooldown) this.jump()
             } else if (inputs.throw) {
                 this.performThrow();
             }
@@ -119,6 +119,8 @@ export class PlayerCharacter extends Character{
                     this.jumpHeight = 0;
                     this.yVel = 0;
                     this.xVel = 0;
+                    this.jumpCooldown = true;
+                    setTimeout( () => this.jumpCooldown = false, 100)
                 } else{
                     this.position[1] += this.yVel;
                     this.jumpHeight -= this.yVel;

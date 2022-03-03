@@ -3,7 +3,7 @@ import { Character } from "./character";
 export class cpuCharacter extends Character{
     constructor(game, startPos, enermyType = 'skeleton', scoreBase = 50) {
         super(game, startPos, enermyType, Math.floor(Math.random() * 2) === 1 ? 'left' : 'right')
-        this.hitBoxRange = [175, 50]
+        this.hitBoxRange = [150, 50]
         this.agressionRating = this.getAggressionRating() // a number between 0-100, indicating likelyhood that enemy attacks while in range
         this.ActionLockOut = false;
         this.scoreBase = scoreBase;
@@ -67,7 +67,7 @@ export class cpuCharacter extends Character{
             this.xVel = Math.floor(Math.random()) + 1
             this.yVel = Math.floor(Math.random() * 2)
             if(this.directionFaced === 'left') this.xVel = -this.xVel;
-            if(this.position[1] > this.game.currentScreen.player.position[1]) this.yVel = -this.yVel
+            if(this.position[1] > this.game.currentScreen.player.position[1] + this.game.currentScreen.player.jumpHeight) this.yVel = -this.yVel
         }
         this.updateCurrentPos();
     }
