@@ -11,42 +11,29 @@ export class Stage {
         this.dimensions = game.dimensions;
         this.floorHeight = game.dimensions.height/2.2
         this.ctx = game.ctx;
-        //list of stages.  eventually probably want to replace with images
-        //list properties: sky-color, ground-color
         this.enemies = [];
         this.killed_characters = [];    
         this.player = new PlayerCharacter(game);
         this.timer = new Timer(this.ctx, this.dimensions);
-        this.score = new Score(this.ctx, this.dimensions, this.timer);
+        this.score = new Score(this.ctx, this.dimensions, this.timer, this.game);
         this.addNewEnemies();
         this.startMusic();
         this.gameOver = false;
-        // this.pickStage()
     }
 
     startMusic() {
         if(this.game.options.sound === 'on') {
-            this.sound = new Howl({
+            this.backgroundMusic = new Howl({
                 src: ['./sounds/The_Dark_Amulet.mp3']
             });
-            this.sound.volume(this.game.options.volume.BGM * .1);
-            this.sound.play();
+            this.backgroundMusic.volume(this.game.options.volume.BGM * .1);
+            this.backgroundMusic.play();
         }
     }
 
     stopMusic() {
-        this.sound.stop();
+        this.backgroundMusic.stop();
     }
-    // pickStage() {
-    //     let stageNum;
-    //     if (this.game.options.stage === 'random') {
-    //         stageNum = Math.floor(Math.random()  * this.stageList.length)
-    //     } else {
-    //         stageNum = 0 // TODO CHANGE THIS 
-    //         /// take stage number/name
-    //     }
-    //     this.stage = this.stageList[stageNum]
-    // }
 
     draw() {
       if(this.flashScreen) {
@@ -97,7 +84,8 @@ export class Stage {
     }
 
     addNewEnemies() {
-        let totalEnemies = 2 + Math.floor(this.timer.time / 20)
+        let difficultyMultiplier = this.game.options.difficulty === 'easy' ? 1 : this.game.options.difficulty === 'medium' ? 1.5 : 2;
+        let totalEnemies = Math.floor((2 + Math.floor(this.timer.time / 20)) * difficultyMultiplier);
         while(this.enemies.length < totalEnemies) {
             this.generateEnemy();
         }
@@ -138,7 +126,6 @@ export class Stage {
             setTimeout(() => this.killed_characters.shift(), 5000);
             this.player.death();
             this.gameOver = true;
-            // setTimeout( () => this.player = new PlayerCharacter(this.game), 6000);
         }
     }
 

@@ -4,8 +4,7 @@
     background-color: black;
 }
 
-.mute-button {
-
+#mute-button {
     display: float;
     position: absolute;
     top: 10px;
@@ -13,6 +12,11 @@
     background-color: rgba(255,255,255,0);
     border: none;
 }
+
+#mute-button:focus {
+    outline: none;
+    box-shadow: none;
+  }
 
 
 .background-container {

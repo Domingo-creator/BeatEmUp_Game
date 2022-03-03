@@ -10,8 +10,13 @@ export class cpuCharacter extends Character{
     }
 
     getAggressionRating() {
-        if(this.game.options.difficulty === 'easy') {
-            return 10;
+        switch(this.game.options.difficulty) {
+            case 'easy':
+                return 10;
+            case 'medium':
+                return 15;
+            case 'hard':
+                return 20;
         }
     }
 

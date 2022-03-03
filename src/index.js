@@ -24,12 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let game;
 
 
-    muteButton.addEventListener( 'click', (e) => {
-        if(muteButton.value === 'mute') {
-
-        }
-    })
-
     clickContainer.addEventListener( 'click', (e) => {
         //hide neon signs
         clickContainer.style.display = 'none'
@@ -53,11 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.addEventListener('keydown', (e) => {
                 // console.log(e.code)
+                if(e.code === 'Space') e.preventDefault();
                 let command = Object.keys(game.options.controls).filter( key => game.options.controls[key] === e.code)
                 if (command.length) game.setKeyDown(command[0]);
             })
 
             document.addEventListener('keyup', (e) => {
+                if(e.code === 'Space') e.preventDefault();
                 let command = Object.keys(game.options.controls).filter( key => game.options.controls[key] === e.code)
                 if (command.length) game.setKeyUp(command[0]);
         })

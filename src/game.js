@@ -12,6 +12,7 @@ export class Game {
         this.ctx = canvas.getContext("2d");
         this.dimensions = {width: canvas.width, height: canvas.height}
         this.options = new Options();
+        this.enableMuteButton();
         this.startMenu();
         this.controller = {
             up: false,
@@ -31,8 +32,8 @@ export class Game {
         this.currentScreen = new StartMenu(this);
     }
     
-    startInstructions() {
-        this.currentScreen = new GameInstructions(this)
+    startInstructions(backgroundMusic) {
+        this.currentScreen = new GameInstructions(this, backgroundMusic)
     }
 
     startGame() {
@@ -83,6 +84,24 @@ export class Game {
 
         this.currentScreen.move(moveInputs)
         this.currentScreen.performAction(actionInputs)
+    }
+
+    enableMuteButton() {
+        let muteButton = document.getElementById('mute-button');
+        muteButton.hidden = false;
+        let muteButtonImage = document.getElementById('mute-image')
+        muteButton.addEventListener( 'click', () => {
+            if(this.options.sound === 'on') {
+                this.options.sound = 'off'
+                muteButtonImage.src = './images/mainPage/mute.png'
+                this.currentScreen.stopMusic();
+            } else {
+                this.options.sound = 'on'
+                muteButtonImage.src = './images/mainPage/unmute.png'
+                this.currentScreen.startMusic();
+            }
+            muteButton.blur();
+        })
     }
 
     update() {

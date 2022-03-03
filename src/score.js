@@ -1,5 +1,6 @@
 export class Score {
-    constructor(ctx, dimensions, timer) {
+    constructor(ctx, dimensions, timer, game) {
+        this.game = game;
         this.timer = timer
         this.dimensions = dimensions
         this.ctx = ctx;
@@ -7,8 +8,22 @@ export class Score {
     }
 
     increaseScore(enemy) {
-        let multiplier = 1 + Math.floor(this.timer.time / 20)
-        this.score += enemy.scoreBase * multiplier
+        let difficultyMultiplier;
+        console.log(this.game.options)
+        switch(this.game.options.difficulty) {
+            case 'easy':
+                difficultyMultiplier = 1;
+                break;
+            case 'medium':
+                difficultyMultiplier = 1.3;
+                break;
+            case 'hard':
+                difficultyMultiplier = 1.6;
+                break;
+        }
+        let timeMultiplier = 1 + Math.floor(this.timer.time / 20)
+        console.log(difficultyMultiplier)
+        this.score += Math.floor(enemy.scoreBase * timeMultiplier * difficultyMultiplier);
     }
 
     draw() {

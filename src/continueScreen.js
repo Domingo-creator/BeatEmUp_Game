@@ -54,13 +54,14 @@ export class ContinueScreen {
     performAction(command) {
         if (!this.moveLockout) {
             if (command.lAttack) {
+                this.game.currentScreen.stopMusic();
                 if(this.optionSelected === 'Yes') {
                     this.playSound();
                     this.game.currentScreen = new Stage(this.game);
                 } else {
                     this.playSound();
-                    this.game.currentScreen.stopMusic();
                     this.game.currentScreen = new StartMenu(this.game)
+                    setTimeout( () => this.game.currentScreen.menuReady = true, 1000);
                 }
             }
         }
@@ -71,7 +72,7 @@ export class ContinueScreen {
             var sound = new Howl({
                 src: ['./sounds/menu_sounds/MENU_Pick.wav']
             });
-            
+            sound.volume(this.game.options.volume.SFX * .1)  
             sound.play();
         }
 

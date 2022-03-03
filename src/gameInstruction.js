@@ -1,7 +1,7 @@
 import { CharacterModels } from "./characterModels";
 
 export class GameInstructions {
-    constructor(game) {
+    constructor(game, sound) {
         this.game = game
         this.ctx = game.ctx;
         this.dimensions = game.dimensions;
@@ -9,6 +9,8 @@ export class GameInstructions {
         this.currentFrame = 0;
         this.currentStep = 0;
         this.getNextStep();
+        this.backgroundMusic = sound
+    
     }
 
     draw(ctx){
@@ -95,6 +97,7 @@ export class GameInstructions {
             setTimeout( () => this.getNextStep(), 3000)
         }else if(this.currentStep === 5) {
             this.currentInstruction = 'Start'
+            this.stopMusic();
             setTimeout( () => this.game.startGame(), 1000)
         } 
     }
@@ -104,6 +107,13 @@ export class GameInstructions {
     
     performAction() {}//dummy function
 
+    startMusic() {
+        this.backgroundMusic.play();
+    }//dummy function
+ 
+    stopMusic() {
+        this.backgroundMusic.stop();
+    } //dummy function
 
     getPosition() {
             //update position

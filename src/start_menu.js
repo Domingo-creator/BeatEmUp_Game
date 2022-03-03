@@ -96,9 +96,9 @@ export class StartMenu {
         this.selectedIdx = 0;
         const soundOption = new MenuOption('Sound', [this.dimensions.width/2, this.dimensions.height/1.85], this.createSoundMenuOptions.bind(this), true)
         const difficultyOption = new MenuOption('Difficulty', [this.dimensions.width/2, this.dimensions.height/1.6], this.createDifficultyMenuOptions.bind(this))
-        const controlsOption = new MenuOption('Change Controls', [this.dimensions.width/2, this.dimensions.height/1.4], this.createControlsMenuOptions.bind(this))
+        //const controlsOption = new MenuOption('Change Controls', [this.dimensions.width/2, this.dimensions.height/1.4], this.createControlsMenuOptions.bind(this))
         const backOption = new MenuOption('Back', [this.dimensions.width/2, this.dimensions.height/1.2], this.createMainMenuOptions.bind(this))
-        this.menuOptions = [soundOption, difficultyOption, controlsOption, backOption];
+        this.menuOptions = [soundOption, difficultyOption, /*controlsOption,*/ backOption];
     }
 
     createControlsMenuOptions() {
@@ -214,8 +214,7 @@ export class StartMenu {
     }
 
     startGame() {
-        this.stopMusic()
-        this.game.startInstructions();
+        this.game.startInstructions(this.backgroundMusic);
     }
 
     adjustControls() {
@@ -251,16 +250,16 @@ export class StartMenu {
 
     startMusic() {
         if(this.game.options.sound === 'on') {
-            this.sound = new Howl({
+            this.backgroundMusic = new Howl({
                 src: ['./sounds/Searching.ogg']
             });
-            this.sound.volume(this.game.options.volume.BGM * .1)  
-            this.sound.play();
+            this.backgroundMusic.volume(this.game.options.volume.BGM * .1)  
+            this.backgroundMusic.play();
         }
     }
 
     stopMusic() {
-        this.sound.stop();
+        this.backgroundMusic.stop();
     }
 
  
