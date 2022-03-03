@@ -234,6 +234,14 @@ export class StartMenu {
 
     adjustSound(soundStatus) {
         this.game.options.sound = soundStatus;
+        let muteButtonImage = document.getElementById('mute-image')
+        if(soundStatus === 'off') {
+             this.stopMusic();
+             muteButtonImage.src =  './images/mainPage/mute.png'
+        } else {
+            this.startMusic();
+            muteButtonImage.src = './images/mainPage/unmute.png'
+        }
         this.createOptionsMenuOptions()
     }
 
