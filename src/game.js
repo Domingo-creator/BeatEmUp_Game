@@ -94,11 +94,11 @@ export class Game {
             if(this.options.sound === 'on') {
                 this.options.sound = 'off'
                 muteButtonImage.src = './images/mainPage/mute.png'
-                this.currentScreen.stopMusic();
+                this.currentScreen.muteMusic();
             } else {
                 this.options.sound = 'on'
                 muteButtonImage.src = './images/mainPage/unmute.png'
-                this.currentScreen.startMusic();
+                this.currentScreen.unMuteMusic();
             }
             muteButton.blur();
         })

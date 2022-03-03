@@ -26,8 +26,7 @@ export class StartMenu {
                 if (this.selectedIdx < 0) this.selectedIdx = this.menuOptions.length-1;
                 this.menuOptions[this.selectedIdx].toggleHighlight();
                 this.lockoutMenu()
-            }
-            if (inputs.down) {
+            }if (inputs.down) {
                 this.menuOptions[this.selectedIdx].toggleHighlight();
                 this.selectedIdx++;
                 if (this.selectedIdx === this.menuOptions.length) this.selectedIdx = 0;
@@ -236,10 +235,10 @@ export class StartMenu {
         this.game.options.sound = soundStatus;
         let muteButtonImage = document.getElementById('mute-image')
         if(soundStatus === 'off') {
-             this.stopMusic();
+             this.muteMusic();
              muteButtonImage.src =  './images/mainPage/mute.png'
         } else {
-            this.startMusic();
+            this.unMuteMusic();
             muteButtonImage.src = './images/mainPage/unmute.png'
         }
         this.createOptionsMenuOptions()
@@ -274,6 +273,14 @@ export class StartMenu {
 
     stopMusic() {
         this.backgroundMusic.stop();
+    }
+
+    muteMusic() {
+        this.backgroundMusic.mute(true)
+    }
+
+    unMuteMusic() {
+        this.backgroundMusic.mute(false)
     }
 
  

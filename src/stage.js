@@ -35,6 +35,14 @@ export class Stage {
         this.backgroundMusic.stop();
     }
 
+    muteMusic() {
+        this.backgroundMusic.mute(true)
+    }
+
+    unMuteMusic() {
+        this.backgroundMusic.mute(false)
+    }
+
     draw() {
       if(this.flashScreen) {
          this.ctx.fillStyle = 'white'

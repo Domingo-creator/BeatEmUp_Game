@@ -39,7 +39,7 @@ export class GameInstructions {
                 let text
                 switch(this.currentStep) {
                     case 1: 
-                        text = 'Movement Controls: A: Left, S: down, D: right, W: up'
+                        text = 'Movement Controls: A: Left, S: down, D: right, W: up.  Dash by triple tapping left or right'
                         let wasd = new Image();
                         wasd.onload = () => {
                             this.ctx.drawImage(wasd, this.dimensions.width /4, this.dimensions.height / 1.8, 80, 60)
@@ -107,13 +107,17 @@ export class GameInstructions {
     
     performAction() {}//dummy function
 
-    startMusic() {
-        this.backgroundMusic.play();
-    }//dummy function
+    muteMusic() {
+        this.backgroundMusic.mute(true);
+    }
  
+    unMuteMusic() {
+        this.backgroundMusic.mute(false);
+    } 
+
     stopMusic() {
         this.backgroundMusic.stop();
-    } //dummy function
+    }
 
     getPosition() {
             //update position
