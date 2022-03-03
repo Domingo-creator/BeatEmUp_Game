@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout( () => {
             backgroundContainer.style.backgroundImage = "url('./images/mainPage/arcade_screen_background.jpg')"
             backgroundContainer.style.backgroundSize = 'contain'
+            backgroundContainer.style.height = '757px'
             document.querySelector('.canvas-container').style.display = 'flex';
             let canvas = document.getElementById('game-canvas') 
             game = new Game(canvas);
