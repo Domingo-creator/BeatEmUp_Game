@@ -23,6 +23,10 @@ In addition, this project will include:
 ####Wireframes
 [wireframes](https://wireframe.cc/i5caUj)
 
+![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/images/screenshots/titleScreenScreenshot.png?raw=true)
+
+![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/images/screenshots/inGameScreenScreenshot.png?raw=true)
+
 #####Technologies, Libraries, APIs 
 -Canvas: to help me draw my game on the screen 
 -Vanilla JS DOM manipulation
@@ -35,3 +39,14 @@ In addition, this project will include:
 -Tuesday: finish essential animations and begin working on UI 
 -Wednesday: finish cleaing up UI and any other issues that arrise.
 -Thursday Morning: final testing and deploying project online
+
+
+
+
+TODO:
+
+Delve deep into ~2 features that show off your technical abilities. Discuss both the challenges faced and your brilliant solutions.
+Code snippets to highlight your best code (markdown code snippets, NOT screenshots)
+
+
+
