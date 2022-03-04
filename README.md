@@ -29,25 +29,32 @@ In addition, this project will include:
 
 #####Technologies, Libraries, APIs 
 -Canvas: to help me draw my game on the screen 
+
 -Vanilla JS DOM manipulation
+
 -SCSS for some of the page animations
 
 ######Implementation Timeline:
 
 -Friday Afternoon & Weekend: Work on the logic of the game, detecting collision, movement, etc. 
+
 -Monday: Start working on adding graphical aspects of game. Starting with essential game animation 
+
 -Tuesday: finish essential animations and begin working on UI 
+
 -Wednesday: finish cleaing up UI and any other issues that arrise.
+
 -Thursday Morning: final testing and deploying project online
 
 
+
 ####### Credits
--[!alt text](https://twitter.com/Namatnieks) for the knight sprite sheet
+-![alt text](https://twitter.com/Namatnieks) for the knight sprite sheet
 -Astro Bob for the skeleton sprite sheet
 -Mathew Pablo for the game music
 -Theon James for game background
--[!alt text](https://www.shutterstock.com/g/kostins) for title screen background
--[!alt text](https://www.shutterstock.com/g/Atmosphere) for main page background
+-![alt text](https://www.shutterstock.com/g/kostins) for title screen background
+-![alt text](https://www.shutterstock.com/g/Atmosphere) for main page background
 
 
 
