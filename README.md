@@ -18,8 +18,11 @@ Jump
 Receive damage
 
 In addition, this project will include: 
+
 -There will be a start menu 
+
 -There will be an options menu
+
 -There will be a mute button
 
 
