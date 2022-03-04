@@ -34,12 +34,13 @@ In addition, this project will include:
 
 
 #####Technologies, Libraries, APIs 
+- Vanilla Javascript for all logic
+
+-Vanilla JS DOM manipulation for changing page elements
+
 -Canvas: to help me draw my game on the screen 
 
--Vanilla JS DOM manipulation
-
--SCSS for some of the page animations
-
+-CSS organization page animations
 
 
 ######Implementation Timeline:
