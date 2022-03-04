@@ -50,10 +50,15 @@ In addition, this project will include:
 
 ####### Credits
 -https://twitter.com/Namatnieks for the knight sprite sheet
+
 -Astro Bob for the skeleton sprite sheet
+
 -Mathew Pablo for the game music
+
 -Theon James for game background
+
 -https://www.shutterstock.com/g/kostins for title screen background
+
 -https://www.shutterstock.com/g/Atmosphere for main page background
 
 
