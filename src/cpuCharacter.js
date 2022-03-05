@@ -22,15 +22,16 @@ export class cpuCharacter extends Character{
 
     determineNextAction() {
         //simple logic AI.  Maybe make this easy mode later
-        if(!this.stunned && !this.ActionLockOut)
-            //if not in bounds
-            if (!this.checkXInbounds(this.position[0])) {
+        if(!this.stunned && !this.ActionLockOut) {
+            //if not in ALMOST bounds
+            if (!this.checkXInbounds(this.position[0] + (this.directionFaced === 'left' ? -40 : 40))) {
                 this.move( )
             }
             else {
                 //move toards player or randomly attack
                 this.isPlayerInRange() ? this.getRandomInRangeAction() : this.move()    
             }
+        }
     }
 
     facePlayer() {
