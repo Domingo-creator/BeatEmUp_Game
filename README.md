@@ -1,4 +1,4 @@
-#BeatEmUp_Game AKA Skeletal Swarm:
+# BeatEmUp_Game AKA Skeletal Swarm:
 A fun JS beat-em-up game
 
 LIVE-LINK: https://domingo-creator.github.io/BeatEmUp_Game/
@@ -27,7 +27,7 @@ In addition, this project will include:
 
 
 
-####Wireframes
+#### Wireframes
 [wireframes](https://wireframe.cc/i5caUj)
 
 ![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/blob/master/images/screenshots/titleScreenScreenshot.png)
@@ -36,7 +36,7 @@ In addition, this project will include:
 
 
 
-#####Technologies, Libraries, APIs 
+##### Technologies, Libraries, APIs 
 - Vanilla Javascript for all logic
 
 -Vanilla JS DOM manipulation for changing page elements
@@ -46,7 +46,7 @@ In addition, this project will include:
 -CSS organization page animations
 
 
-######Implementation Timeline:
+###### Implementation Timeline:
 
 -Friday Afternoon & Weekend: Work on the logic of the game, detecting collision, movement, etc. 
 
