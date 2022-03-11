@@ -3,7 +3,8 @@ A fun JS beat-em-up game
 
 LIVE-LINK: https://domingo-creator.github.io/BeatEmUp_Game/
 
-##Background This is a fun retro style beat-em-up game similar to the old double dragon/X-men arcade games. You will will be able to move back and forth accross the stage and battle with the incoming enemies. You have a limited health bar and your score is tracked.  As time goes on, the number of enemies on screen will increase.  Survive as long as you can.
+## Background 
+  This is a fun retro style beat-em-up game similar to the old double dragon/X-men arcade games. You will will be able to move back and forth accross the stage and battle with the incoming enemies. You have a limited health bar and your score is tracked.  As time goes on, the number of enemies on screen will increase.  Survive as long as you can.
 
 
 
