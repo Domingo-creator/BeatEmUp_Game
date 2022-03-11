@@ -21,9 +21,9 @@ In BeatEmUpGame, users will be able to:
 
 In addition, this project will include: 
 
-+There will be a start menu 
-+There will be an options menu
-+There will be a mute button
++ There will be a start menu 
++ There will be an options menu
++ There will be a mute button
 
 
 
@@ -38,9 +38,9 @@ In addition, this project will include:
 
 ## Technologies, Libraries, APIs 
 + Vanilla Javascript for all logic
-+Vanilla JS DOM manipulation for changing page elements
-+Canvas: to help me draw my game on the screen 
-+CSS organization page animations
++ Vanilla JS DOM manipulation for changing page elements
++ Canvas: to help me draw my game on the screen 
++ CSS organization page animations
 
 
 ## Implementation Timeline:
