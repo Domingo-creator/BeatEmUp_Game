@@ -7,23 +7,23 @@ LIVE-LINK: https://domingo-creator.github.io/BeatEmUp_Game/
 
 
 
-##Functionality & MVPs
+## Functionality & MVPs
 
 In BeatEmUpGame, users will be able to:
 
-Move in all (2d) directions
-Dash
-Attack
-Jump
-Receive damage
++ Move in all (2d) directions
++ Dash
++ Attack
++ Jump
++ Receive damage
+
+
 
 In addition, this project will include: 
 
--There will be a start menu 
-
--There will be an options menu
-
--There will be a mute button
++There will be a start menu 
++There will be an options menu
++There will be a mute button
 
 
 
@@ -37,42 +37,30 @@ In addition, this project will include:
 
 
 ## Technologies, Libraries, APIs 
-- Vanilla Javascript for all logic
-
--Vanilla JS DOM manipulation for changing page elements
-
--Canvas: to help me draw my game on the screen 
-
--CSS organization page animations
++ Vanilla Javascript for all logic
++Vanilla JS DOM manipulation for changing page elements
++Canvas: to help me draw my game on the screen 
++CSS organization page animations
 
 
 ## Implementation Timeline:
 
--Friday Afternoon & Weekend: Work on the logic of the game, detecting collision, movement, etc. 
-
--Monday: Start working on adding graphical aspects of game. Starting with essential game animation 
-
--Tuesday: finish essential animations and begin working on UI 
-
--Wednesday: finish cleaing up UI and any other issues that arrise.
-
--Thursday Morning: final testing and deploying project online
++Friday Afternoon & Weekend: Work on the logic of the game, detecting collision, movement, etc. 
++Monday: Start working on adding graphical aspects of game. Starting with essential game animation 
++Tuesday: finish essential animations and begin working on UI 
++Wednesday: finish cleaing up UI and any other issues that arrise.
++Thursday Morning: final testing and deploying project online
 
 
 
 
 ## Credits
--https://twitter.com/Namatnieks for the knight sprite sheet
-
--Astro Bob for the skeleton sprite sheet
-
--Mathew Pablo for the game music
-
--Theon James for game background
-
--https://www.shutterstock.com/g/kostins for title screen background
-
--https://www.shutterstock.com/g/Atmosphere for main page background
++ https://twitter.com/Namatnieks for the knight sprite sheet
++ Astro Bob for the skeleton sprite sheet
++ Mathew Pablo for the game music
++ Theon James for game background
++ https://www.shutterstock.com/g/kostins for title screen background
++ https://www.shutterstock.com/g/Atmosphere for main page background
 
 
 
