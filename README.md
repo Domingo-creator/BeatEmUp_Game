@@ -6,8 +6,7 @@ LIVE-LINK: https://domingo-creator.github.io/BeatEmUp_Game/
 ## Background 
   This is a fun retro style beat-em-up game similar to the old double dragon/X-men arcade games. You will will be able to move back and forth accross the stage and battle with the incoming enemies. You have a limited health bar and your score is tracked.  As time goes on, the number of enemies on screen will increase.  Survive as long as you can.
 
-![skeletal_swarm_gameplay](https://user-images.githubusercontent.com/59151493/166077172-8dfca8da-06fb-4553-8378-3fca5e475b35.gif)
-
+![skeletal_swarm_title_screen](https://user-images.githubusercontent.com/59151493/166077190-6fa64f73-3e55-4e82-988d-2a7017e7d592.gif)
 
 ## Functionality & MVPs
 In BeatEmUpGame, users will be able to:
@@ -31,10 +30,9 @@ In addition, this project will include:
 ## Wireframes
 [wireframes](https://wireframe.cc/i5caUj)
 
-![skeletal_swarm_title_screen](https://user-images.githubusercontent.com/59151493/166077190-6fa64f73-3e55-4e82-988d-2a7017e7d592.gif)
 
-![Uploading skeletal_swarm_gameplay.gif…]()
 
+![skeletal_swarm_gameplay](https://user-images.githubusercontent.com/59151493/166077172-8dfca8da-06fb-4553-8378-3fca5e475b35.gif)
 
 
 
