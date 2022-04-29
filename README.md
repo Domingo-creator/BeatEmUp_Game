@@ -29,11 +29,9 @@ In addition, this project will include:
 
 ## Wireframes
 [wireframes](https://wireframe.cc/i5caUj)
-![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/blob/master/images/screenshots/titleScreenScreenshot.png)
 
 ![skeletal_swarm_gameplay](https://user-images.githubusercontent.com/59151493/166075914-66e3c2ba-61ee-43b8-9c57-5aeec429ae2f.gif)
 
-![alt text](https://github.com/Domingo-creator/BeatEmUp_Game/blob/master/images/screenshots/inGameScreenshot.png)
 
 
 
