@@ -32,10 +32,6 @@ In addition, this project will include:
 
 
 
-![skeletal_swarm_gameplay](https://user-images.githubusercontent.com/59151493/166077172-8dfca8da-06fb-4553-8378-3fca5e475b35.gif)
-
-
-
 ## Technologies, Libraries, APIs 
 + Vanilla Javascript for all logic
 + Vanilla JS DOM manipulation for changing page elements
@@ -108,6 +104,7 @@ Players can also double tap a direction to dash, or press space to jump.  Moveme
     return false
   }
 ```
+![skeletal_swarm_gameplay](https://user-images.githubusercontent.com/59151493/166077172-8dfca8da-06fb-4553-8378-3fca5e475b35.gif)
 
 ### Enemies
 ```
