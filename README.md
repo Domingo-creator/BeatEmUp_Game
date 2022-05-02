@@ -109,7 +109,18 @@ Players can also double tap a direction to dash, or press space to jump.  Moveme
 ```
 
 ### Enemies
-
+```
+  determineNextAction() {
+        if(!this.stunned && !this.ActionLockOut) {
+            if (!this.checkXInbounds(this.position[0] + (this.directionFaced === 'left' ? -40 : 40))) {
+                this.move( )
+            }
+            else {
+                this.isPlayerInRange() ? this.getRandomInRangeAction() : this.move()    
+            }
+        }
+    }
+```
 
 
 
