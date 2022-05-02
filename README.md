@@ -79,6 +79,52 @@ Players can also double tap a direction to dash, or press space to jump.  Moveme
 ```
 
 ### Attacks
+```
+  performLightAttack(){
+      if (this.directionFaced === 'right')
+        this.hitbox = [this.position[0],this.position[1]+this.size.height,this.position[0]+215, this.position[1]]
+      else {
+        this.hitbox = [this.position[0] - 175,this.position[1]+this.size.height,this.position[0], this.position[1]]
+      }
+      this.currentAction = 'lAttack';
+      this.comboWindowOpen = true;
+      setTimeout( () => {
+        this.comboWindowOpen = false;
+        this.hitbox = []
+        this.currentAction = null;
+      },500)
+    }
+```
+```
+  checkCollision(hitbox, hurtbox) {
+    if ((hitbox[0] <= hurtbox[0] && hitbox[2] >= hurtbox[0]) ||
+      (hitbox[0] <= hurtbox[2] && hitbox[2] >= hurtbox[2])) {
+        if((hitbox[1] >= hurtbox[1] && hitbox[3] <= hurtbox[1]) ||
+            hitbox[1] >= hurtbox[3] && hitbox[3] <= hurtbox[3]){
+            return true;
+        }
+    } 
+    return false
+  }
+```
+```
+  checkPlayerAttacks() {
+    if (this.player.hitbox.length) {
+      this.enemies.forEach(enemy => {
+        if(this.checkCollision(this.player.hitbox, enemy.calculateHurtBox())){
+          switch(this.player.currentAction) {
+              case 'lAttack':
+                if (!enemy.stunned) {
+                    enemy.takeDamage(15);
+                }
+                break;
+          }
+        }
+      })
+    }
+  }
+```
+
 
 
 
