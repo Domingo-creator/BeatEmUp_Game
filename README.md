@@ -49,7 +49,7 @@ In addition, this project will include:
 Players can move in any of the 8 direction: up, down, left, right, down-left, down-right, up-left, or up-right.
 Players can also double tap a direction to dash, or press space to jump.  Movement is 
 
-`             
+```             
   if(this.game.controller.down) {
       if(!this.game.controller.up && this.yVel < 0) this.yVel = 0;
       this.dashDirection = null;
@@ -62,7 +62,7 @@ Players can also double tap a direction to dash, or press space to jump.  Moveme
           this.xVel -= this.moveSpeed;
       } 
   }
-`
+```
 
 ### Attacks
 
