@@ -70,7 +70,7 @@ Skeletal swarm was
 ```
 
 ### Attacks
-  Players and enemies can perform attacks, which temporarily casts a *_hit-box_* in the direction faced.  A collision detection algorithm is used to determin if this *_hit-box_* overlaps an enemy character's *_hurt-box_*.  If a collision is detected, damage is dealt to the impacted character's health bar. 
+  Players and enemies can perform attacks, which temporarily casts a *_hit-box_* in the direction faced.  A collision detection algorithm is used to determin if this *_hit-box_* overlaps an enemy character's *_hurt-box_*.  If a collision is detected, damage is dealt to the impacted character's health bar and they unable to perform other actions for a short time. 
 ```
   performLightAttack(){
       if (this.directionFaced === 'right')
