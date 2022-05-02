@@ -46,7 +46,8 @@ In addition, this project will include:
 ## Features
 
 ### Movement
-
+Players can move in any of the 8 direction: up, down, left, right, down-left, down-right, up-left, or up-right.
+Players can also double tap a direction to dash, or press space to jump.
 ### Attacks
 
 
