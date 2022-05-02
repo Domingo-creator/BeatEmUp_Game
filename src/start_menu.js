@@ -16,6 +16,13 @@ export class StartMenu {
         this.framesDrawn = 0;
         this.currentFrame = 0;
         this.startMusic()
+        this.showControls = false;
+        this.controlTimeout;
+        this.controlWindowListener = this.game.canvas.addEventListener( "click", () => {
+            clearInterval(this.controlTimeout)
+            this.showControls = true 
+            this.controlTimeout = setTimeout(() => this.showControls = false, 5000)
+        })
     }
 
     move(inputs) {
@@ -216,9 +223,27 @@ export class StartMenu {
             this.ctx.fillText(`${this.headline}`, this.dimensions.width/2, this.dimensions.height/5);
         }
         this.menuOptions.forEach( option => option.draw(ctx))
+        
+        //Draw control directions window
+        if(this.showControls) {
+            this.ctx.font = '25px Sans-serif';
+            this.ctx.lineWidth = 5;
+            this.ctx.strokeStyle = "gray"
+            this.ctx.fillStyle = "black"
+            this.ctx.fillRect( this.dimensions.width / 7, this.dimensions.height / 1.45, this.dimensions.width/1.4, this.dimensions.height/4.0)
+            this.ctx.strokeRect( this.dimensions.width / 7, this.dimensions.height / 1.45, this.dimensions.width/1.4, this.dimensions.height/4.0)
+            this.ctx.fillStyle = "white"
+            this.ctx.strokeText("Controls:     'w' up", this.dimensions.width/2.3, this.dimensions.height/1.3)
+            this.ctx.fillText("Controls:     'w' up", this.dimensions.width/2.3, this.dimensions.height/1.3);
+            this.ctx.strokeText("'s' down", this.dimensions.width/1.85, this.dimensions.height/1.2)
+            this.ctx.fillText("'s' down", this.dimensions.width/1.85, this.dimensions.height/1.2);
+            this.ctx.strokeText("'j' accept", this.dimensions.width/1.82, this.dimensions.height/1.12)
+            this.ctx.fillText("'j' accept", this.dimensions.width/1.82, this.dimensions.height/1.12);
+        }
     }
 
     startGame() {
+        this.game.canvas.removeEventListener("click", this.controlWindowListener)
         this.game.startInstructions(this.backgroundMusic);
     }
 
