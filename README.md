@@ -75,8 +75,7 @@ Players can also double tap a direction to dash, or press space to jump.  Moveme
       if(this.xVel > -5 || (this.dashDirection === 'left' && this.xVel > -15)) {
           this.xVel -= this.moveSpeed;
       } 
-  }
-  .....
+  }.....
 ```
 
 ### Attacks
