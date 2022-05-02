@@ -43,13 +43,8 @@ In addition, this project will include:
 + CSS organization page animations
 
 
-## Implementation Timeline:
+## Features
 
-+ Friday Afternoon & Weekend: Work on the logic of the game, detecting collision, movement, etc. 
-+ Monday: Start working on adding graphical aspects of game. Starting with essential game animation 
-+ Tuesday: finish essential animations and begin working on UI 
-+ Wednesday: finish cleaing up UI and any other issues that arrise.
-+ Thursday Morning: final testing and deploying project online
 
 
 
