@@ -56,9 +56,6 @@ In addition, this project will include:
 + Tuesday: finish essential animations and begin working on UI 
 + Wednesday: finish cleaing up UI and any other issues that arrise.
 + Thursday Morning: final testing and deploying project online
-<<<<<<< HEAD
-=======
-
 
 
 
@@ -69,7 +66,7 @@ In addition, this project will include:
 + Theon James for game background
 + https://www.shutterstock.com/g/kostins for title screen background
 + https://www.shutterstock.com/g/Atmosphere for main page background
->>>>>>> 319b8aa1168492dcac9af4530cdffe86868091cb
+
 
 
 
