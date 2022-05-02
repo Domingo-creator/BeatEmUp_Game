@@ -129,7 +129,6 @@ export class Character {
     }
   
     performLightAttack(){
-        // console.log('attacking')
         if (this.directionFaced === 'right')
             this.hitbox = [this.position[0],this.position[1]+this.size.height,this.position[0]+215, this.position[1]]
         else {
