@@ -40,6 +40,7 @@ In addition, this project will include:
 + Vanilla Javascript for all logic
 + Vanilla JS DOM manipulation for changing page elements
 + Canvas: to help me draw my game on the screen 
++ Howler.js to control sound effects
 + CSS organization page animations
 
 
