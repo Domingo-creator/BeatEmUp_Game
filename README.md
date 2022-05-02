@@ -8,10 +8,6 @@ LIVE-LINK: https://domingo-creator.github.io/BeatEmUp_Game/
 
 ![skeletal_swarm_title_screen](https://user-images.githubusercontent.com/59151493/166077190-6fa64f73-3e55-4e82-988d-2a7017e7d592.gif)
 
-
-## Functionality & MVPs
-
-=======
 ## Functionality & MVPs
 In BeatEmUpGame, users will be able to:
 
