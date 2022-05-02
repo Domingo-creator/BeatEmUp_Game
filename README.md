@@ -50,6 +50,12 @@ Players can move in any of the 8 direction: up, down, left, right, down-left, do
 Players can also double tap a direction to dash, or press space to jump.  Movement is 
 
 ```             
+  if(this.game.controller.up) {
+      //check if moving opp direction and not still pressing.  reset if so
+      if(!this.game.controller.down && this.yVel > 0) this.yVel = 0;
+      this.dashDirection = null;
+      if(this.yVel > -5) this.yVel -= this.moveSpeed;
+  }
   if(this.game.controller.down) {
       if(!this.game.controller.up && this.yVel < 0) this.yVel = 0;
       this.dashDirection = null;
@@ -61,6 +67,13 @@ Players can also double tap a direction to dash, or press space to jump.  Moveme
       if(this.xVel > -5 || (this.dashDirection === 'left' && this.xVel > -15)) {
           this.xVel -= this.moveSpeed;
       } 
+  }
+  if(this.game.controller.right) {
+      if(!this.game.controller.left && this.xVel < 0) this.xVel = 0;
+      if(this.dashDirection === 'left') this.dashDirection === null;
+      if(this.xVel < 5  || (this.dashDirection === 'right' && this.xVel < 15)) {
+          this.xVel += this.moveSpeed;
+      }
   }
 ```
 
